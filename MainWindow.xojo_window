@@ -62,6 +62,51 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  dim i,j as integer
+		  
+		  p.graphics.drawpicture SSTbg,0,0
+		  for i=1 to 15
+		    for j=1 to 15
+		      if board(i,j).tile > 0 then
+		        displaytile g,i,j,board(i,j).tile
+		        displaytile p.graphics,i,j,board(i,j).tile
+		      end if
+		    next
+		  next
+		  for i=1 to 7
+		    if currentrack.tiles(i) > 0 then
+		      displaytile g,i+4,17,currentrack.tiles(i)
+		      displaytile p.graphics,i+4,17,currentrack.tiles(i)
+		    end if
+		  next
+		End Sub
+	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Sub displaytile(g as graphics, x as integer, y as integer, tilenum as integer)
+		  if tiles(tilenum).uncommitted then
+		    g.foreColor = rgb(223,223,159)
+		  else
+		    g.foreColor = rgb(255,255,191)
+		  end
+		  g.fillrect x*30-28,y*30-28,27,27
+		  g.foreColor = rgb(0,0,0)
+		  g.TextFont="Courier"
+		  g.TextSize=24
+		  g.DrawString tiles(tilenum).face, x*30-25, y*30-9
+		  g.textsize=9
+		  if tiles(tilenum).value > 9 then
+		    g.drawstring str(tiles(tilenum).value),x*30-12,y*30-3
+		  else
+		    g.drawstring str(tiles(tilenum).value),x*30-8,y*30-3
+		  end if
+		End Sub
+	#tag EndMethod
+
+
 #tag EndWindowCode
 
 #tag ViewBehavior
