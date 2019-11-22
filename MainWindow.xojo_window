@@ -100,6 +100,27 @@ End
 
 #tag EndWindowCode
 
+#tag Events StartButton
+	#tag Event
+		Sub Action()
+		  dim temp(-1) As string
+		  dim i,j as integer
+		  
+		  for i = 1 to 98
+		    temp.Append mid(app.tiles,i,1)
+		  next
+		  
+		  temp.Shuffle
+		  for i=0 to 13
+		    for j=0 to 6
+		      grid(i,j) = temp.Pop
+		    next
+		  next
+		  Refresh
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"
