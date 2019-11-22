@@ -9,7 +9,7 @@ Begin Window MainWindow
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   800
+   Height          =   271
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
@@ -23,9 +23,9 @@ Begin Window MainWindow
    MinWidth        =   64
    Placement       =   0
    Resizeable      =   True
-   Title           =   "MyTet"
+   Title           =   "Word Crush"
    Visible         =   True
-   Width           =   400
+   Width           =   421
    Begin PushButton PushButton1
       AutoDeactivate  =   True
       Bold            =   False
@@ -39,7 +39,7 @@ Begin Window MainWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   300
+      Left            =   321
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -52,7 +52,7 @@ Begin Window MainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   760
+      Top             =   231
       Transparent     =   False
       Underline       =   False
       Visible         =   True
