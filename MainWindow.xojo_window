@@ -26,7 +26,7 @@ Begin Window MainWindow
    Title           =   "Word Crush"
    Visible         =   True
    Width           =   421
-   Begin PushButton PushButton1
+   Begin PushButton StartButton
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
