@@ -68,7 +68,7 @@ End
 		  
 		  for i=1 to 14
 		    for j=1 to 7
-		      displayletter g,i,j,"A"
+		      displayletter g,i,j,grid(i-1,j-1)
 		    next
 		  next
 		  
@@ -87,6 +87,15 @@ End
 		  
 		End Sub
 	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		grid(13,6) As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		unplaced As String
+	#tag EndProperty
 
 
 #tag EndWindowCode
