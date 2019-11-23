@@ -82,7 +82,22 @@ End
 
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
+		  dim tempx, tempy as integer
 		  
+		  if mdx > 0 and mdy > 0 then
+		    tempx = (x-1) \ 30 + 1
+		    tempy = (y-1) \ 30 + 1
+		    
+		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 and not (mdx = tempx and mdy = tempy) then
+		      if abs(mdx - tempx) = abs(mdy - tempy) then
+		        
+		      elseif mdx = tempx then
+		        
+		      elseif mdy = tempy then
+		        
+		      end
+		    end
+		  end
 		End Sub
 	#tag EndEvent
 
