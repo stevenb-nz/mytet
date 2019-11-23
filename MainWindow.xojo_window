@@ -63,6 +63,30 @@ End
 
 #tag WindowCode
 	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  dim tempx, tempy as integer
+		  
+		  mdx = 0
+		  mdy = 0
+		  tempx = (x-1) \ 30 + 1
+		  tempy = (y-1) \ 30 + 1
+		  
+		  if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 then
+		    mdx = tempx
+		    mdy = tempy
+		  end
+		  return true
+		  
+		End Function
+	#tag EndEvent
+
+	#tag Event
+		Sub MouseUp(X As Integer, Y As Integer)
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  dim i,j as integer
 		  
@@ -91,6 +115,14 @@ End
 
 	#tag Property, Flags = &h0
 		grid(13,6) As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		mdx As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		mdy As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -345,5 +377,10 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="unplaced"
+		Group="Behavior"
+		Type="String"
 	#tag EndViewProperty
 #tag EndViewBehavior
