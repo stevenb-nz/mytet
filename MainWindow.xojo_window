@@ -66,16 +66,20 @@ End
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  dim tempx, tempy as integer
 		  
-		  mdx = 0
-		  mdy = 0
-		  tempx = (x-1) \ 30 + 1
-		  tempy = (y-1) \ 30 + 1
-		  
-		  if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 then
-		    mdx = tempx
-		    mdy = tempy
+		  if StartButton.Enabled = false then
+		    mdx = 0
+		    mdy = 0
+		    tempx = (x-1) \ 30 + 1
+		    tempy = (y-1) \ 30 + 1
+		    
+		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 then
+		      mdx = tempx
+		      mdy = tempy
+		    end
+		    return true
+		  else
+		    return false
 		  end
-		  return true
 		  
 		End Function
 	#tag EndEvent
@@ -97,7 +101,7 @@ End
 		        for i = 0 to j
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
 		        next
-		        'MsgBox s
+		        MsgBox s
 		      end
 		    end
 		  end
@@ -167,6 +171,7 @@ End
 		    next
 		  next
 		  Refresh
+		  me.Enabled = false
 		  
 		End Sub
 	#tag EndEvent
