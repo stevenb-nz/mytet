@@ -82,19 +82,29 @@ End
 
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
-		  dim tempx, tempy as integer
+		  dim dx,dy,i,j,tempx, tempy as integer
+		  dim s as string
 		  
 		  if mdx > 0 and mdy > 0 then
 		    tempx = (x-1) \ 30 + 1
 		    tempy = (y-1) \ 30 + 1
+		    j = max(abs(mdx - tempx),abs(mdy - tempy))
+		    dx = Sign(tempx - mdx)
+		    dy = sign(tempy - mdy)
 		    
 		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 and not (mdx = tempx and mdy = tempy) then
 		      if abs(mdx - tempx) = abs(mdy - tempy) then
-		        
+		        for i = 0 to j
+		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
+		        next
 		      elseif mdx = tempx then
-		        
+		        for i = 0 to j
+		          s = s + grid(mdx-1,mdy-1+i*dy)
+		        next
 		      elseif mdy = tempy then
-		        
+		        for i = 0 to j
+		          s = s + grid(mdx-1+i*dx,mdy-1)
+		        next
 		      end
 		    end
 		  end
@@ -397,5 +407,16 @@ End
 		Name="unplaced"
 		Group="Behavior"
 		Type="String"
+		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="mdx"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="mdy"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
