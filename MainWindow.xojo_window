@@ -92,19 +92,12 @@ End
 		    dx = Sign(tempx - mdx)
 		    dy = sign(tempy - mdy)
 		    
-		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 and not (mdx = tempx and mdy = tempy) then
-		      if abs(mdx - tempx) = abs(mdy - tempy) then
+		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 then
+		      if j > 0 and (abs(mdx - tempx)=abs(mdy - tempy) or abs(mdx - tempx)=0 or abs(mdy - tempy)=0) then
 		        for i = 0 to j
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
 		        next
-		      elseif mdx = tempx then
-		        for i = 0 to j
-		          s = s + grid(mdx-1,mdy-1+i*dy)
-		        next
-		      elseif mdy = tempy then
-		        for i = 0 to j
-		          s = s + grid(mdx-1+i*dx,mdy-1)
-		        next
+		        'MsgBox s
 		      end
 		    end
 		  end
