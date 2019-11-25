@@ -101,7 +101,11 @@ End
 		        for i = 0 to j
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
 		        next
-		        MsgBox s
+		        if isWord(s) then
+		          'MsgBox s
+		        else
+		          'MsgBox s+" is not a word."
+		        end
 		      end
 		    end
 		  end

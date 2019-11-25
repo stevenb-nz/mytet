@@ -12,6 +12,10 @@ Inherits Application
 		Sub Open()
 		  wordsDB = new SQLiteDatabase
 		  wordsDB.DatabaseFile = SpecialFolder.Documents.Child("Words.sqlite")
+		  if not wordsDB.CreateDatabaseFile then
+		    MsgBox "Error connecting to Words database."
+		  end
+		  
 		  
 		End Sub
 	#tag EndEvent
