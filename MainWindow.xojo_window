@@ -9,7 +9,7 @@ Begin Window MainWindow
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   271
+   Height          =   481
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
@@ -52,7 +52,7 @@ Begin Window MainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   231
+      Top             =   441
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -72,7 +72,7 @@ End
 		    tempx = (x-1) \ 30 + 1
 		    tempy = (y-1) \ 30 + 1
 		    
-		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 then
+		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 15 then
 		      mdx = tempx
 		      mdy = tempy
 		    end
@@ -96,15 +96,15 @@ End
 		    dx = Sign(tempx - mdx)
 		    dy = sign(tempy - mdy)
 		    
-		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 8 then
+		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 15 then
 		      if j > 0 and (abs(mdx - tempx)=abs(mdy - tempy) or abs(mdx - tempx)=0 or abs(mdy - tempy)=0) then
 		        for i = 0 to j
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
 		        next
 		        if isWord(s) then
-		          'MsgBox s
+		          MsgBox s
 		        else
-		          'MsgBox s+" is not a word."
+		          MsgBox s+" is not a word."
 		        end
 		      end
 		    end
@@ -117,7 +117,7 @@ End
 		  dim i,j as integer
 		  
 		  for i=1 to 14
-		    for j=1 to 7
+		    for j=1 to 14
 		      displayletter g,i,j,grid(i-1,j-1)
 		    next
 		  next
@@ -157,7 +157,7 @@ End
 
 
 	#tag Property, Flags = &h0
-		grid(13,6) As String
+		grid(13,13) As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -181,13 +181,13 @@ End
 		  dim temp(-1) As string
 		  dim i,j as integer
 		  
-		  for i = 1 to 98
+		  for i = 1 to 196
 		    temp.Append mid(app.tiles,i,1)
 		  next
 		  
 		  temp.Shuffle
 		  for i=0 to 13
-		    for j=0 to 6
+		    for j=0 to 13
 		      grid(i,j) = temp.Pop
 		    next
 		  next
