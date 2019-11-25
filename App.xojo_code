@@ -1,6 +1,27 @@
 #tag Class
 Protected Class App
 Inherits Application
+	#tag Event
+		Sub Close()
+		  wordsDB.Close
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Open()
+		  wordsDB = new SQLiteDatabase
+		  wordsDB.DatabaseFile = SpecialFolder.Documents.Child("Words.sqlite")
+		  
+		End Sub
+	#tag EndEvent
+
+
+	#tag Property, Flags = &h0
+		wordsDB As SQLiteDatabase
+	#tag EndProperty
+
+
 	#tag Constant, Name = kEditClear, Type = String, Dynamic = False, Default = \"&Delete", Scope = Public
 		#Tag Instance, Platform = Windows, Language = Default, Definition  = \"&Delete"
 		#Tag Instance, Platform = Linux, Language = Default, Definition  = \"&Delete"
@@ -19,5 +40,12 @@ Inherits Application
 	#tag EndConstant
 
 
+	#tag ViewBehavior
+		#tag ViewProperty
+			Name="wordsDB"
+			Group="Behavior"
+			Type="Integer"
+		#tag EndViewProperty
+	#tag EndViewBehavior
 End Class
 #tag EndClass

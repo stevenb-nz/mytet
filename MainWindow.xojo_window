@@ -134,6 +134,23 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function isWord(word as String) As Boolean
+		  dim sql as string
+		  sql = "SELECT * from Words WHERE Word='"+word+"'"
+		  
+		  dim data as RecordSet
+		  data = app.wordsDB.SQLSelect(sql)
+		  
+		  if data.EOF then
+		    return false
+		  else
+		    return true
+		  end
+		  
+		End Function
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		grid(13,6) As String
