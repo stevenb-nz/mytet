@@ -86,18 +86,18 @@ End
 
 	#tag Event
 		Sub MouseUp(X As Integer, Y As Integer)
-		  dim dx,dy,i,j,tempx, tempy as integer
+		  dim dx,dy,i,j as integer
 		  dim s as string
 		  
 		  if mdx > 0 and mdy > 0 then
-		    tempx = (x-1) \ 30 + 1
-		    tempy = (y-1) \ 30 + 1
-		    j = max(abs(mdx - tempx),abs(mdy - tempy))
-		    dx = Sign(tempx - mdx)
-		    dy = sign(tempy - mdy)
+		    mux = (x-1) \ 30 + 1
+		    muy = (y-1) \ 30 + 1
+		    j = max(abs(mdx - mux),abs(mdy - muy))
+		    dx = Sign(mux - mdx)
+		    dy = sign(muy - mdy)
 		    
-		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 15 then
-		      if j > 0 and (abs(mdx - tempx)=abs(mdy - tempy) or abs(mdx - tempx)=0 or abs(mdy - tempy)=0) then
+		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and mux > 0 and mux < 15 and muy > 0 and muy < 15 then
+		      if j > 0 and (abs(mdx - mux)=abs(mdy - muy) or abs(mdx - mux)=0 or abs(mdy - muy)=0) then
 		        for i = 0 to j
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
 		        next
@@ -166,6 +166,14 @@ End
 
 	#tag Property, Flags = &h0
 		mdy As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		mux As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		muy As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
