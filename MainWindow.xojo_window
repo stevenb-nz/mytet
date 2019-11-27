@@ -146,6 +146,15 @@ End
 
 	#tag Method, Flags = &h0
 		Sub handleGoodWord(word as string)
+		  dim dx,dy,i,j as integer
+		  
+		  j = max(abs(mdx - mux),abs(mdy - muy))
+		  dx = Sign(mux - mdx)
+		  dy = sign(muy - mdy)
+		  for i = 0 to j
+		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
+		  next
+		  Refresh
 		  
 		End Sub
 	#tag EndMethod
