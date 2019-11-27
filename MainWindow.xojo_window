@@ -148,6 +148,8 @@ End
 		Sub handleGoodWord(word as string)
 		  dim dx,dy,i,j as integer
 		  
+		  unplaced = unplaced + word
+		  MsgBox unplaced
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  dx = Sign(mux - mdx)
 		  dy = sign(muy - mdy)
