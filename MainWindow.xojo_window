@@ -102,9 +102,9 @@ End
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
 		        next
 		        if isWord(s) then
-		          MsgBox s
+		          handleGoodWord(s)
 		        else
-		          MsgBox s+" is not a word."
+		          handleBadWord(s)
 		        end
 		      end
 		    end
@@ -134,6 +134,18 @@ End
 		  g.TextFont="Courier"
 		  g.TextSize=24
 		  g.DrawString letter, x*30-25, y*30-9
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub handleBadWord(letters as String)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub handleGoodWord(word as string)
 		  
 		End Sub
 	#tag EndMethod
@@ -443,6 +455,16 @@ End
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="mdy"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="mux"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="muy"
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
