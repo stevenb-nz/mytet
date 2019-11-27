@@ -58,6 +58,38 @@ Begin Window MainWindow
       Visible         =   True
       Width           =   80
    End
+   Begin PushButton ClearButton
+      AutoDeactivate  =   True
+      Bold            =   False
+      ButtonStyle     =   "0"
+      Cancel          =   False
+      Caption         =   "Clear"
+      Default         =   False
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   1
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   441
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
 End
 #tag EndWindow
 
@@ -149,7 +181,6 @@ End
 		  dim dx,dy,i,j as integer
 		  
 		  unplaced = unplaced + word
-		  MsgBox unplaced
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  dx = Sign(mux - mdx)
 		  dy = sign(muy - mdy)
@@ -224,6 +255,23 @@ End
 		  next
 		  Refresh
 		  me.Enabled = false
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events ClearButton
+	#tag Event
+		Sub Action()
+		  dim i,j as Integer
+		  
+		  unplaced = ""
+		  for i=0 to 13
+		    for j=0 to 13
+		      grid(i,j) = ""
+		    next
+		  next
+		  StartButton.Enabled = true
+		  Refresh
 		  
 		End Sub
 	#tag EndEvent
