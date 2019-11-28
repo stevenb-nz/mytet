@@ -222,6 +222,7 @@ End
 		  for i = 0 to j
 		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
 		  next
+		  updateLabel
 		  Refresh
 		  
 		End Sub
@@ -242,6 +243,15 @@ End
 		  end
 		  
 		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub updateLabel()
+		  
+		  
+		  infoLabel.Text = "0 words, 0 letters max"
+		  
+		End Sub
 	#tag EndMethod
 
 
@@ -288,6 +298,7 @@ End
 		      grid(i,j) = temp.Pop
 		    next
 		  next
+		  updateLabel
 		  Refresh
 		  me.Enabled = false
 		  
