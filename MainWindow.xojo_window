@@ -247,9 +247,9 @@ End
 
 	#tag Method, Flags = &h0
 		Sub updateLabel()
+		  dim words, letters as integer
 		  
-		  
-		  infoLabel.Text = "0 words, 0 letters max"
+		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
 		  
 		End Sub
 	#tag EndMethod
