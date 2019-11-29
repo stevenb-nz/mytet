@@ -247,7 +247,40 @@ End
 
 	#tag Method, Flags = &h0
 		Sub updateLabel()
-		  dim words, letters as integer
+		  dim i, j, x, y, words, letters as integer
+		  dim s as string
+		  
+		  for i = 1 to 14
+		    x = i-1
+		    for j = 1 to 13
+		      y = j-1
+		      s = grid(x,y)
+		      for y = j to 13
+		        s=s+grid(x,y)
+		        if isWord(s) then
+		          words = words + 1
+		          if len(s) > letters then
+		            letters = len(s)
+		            'MsgBox s
+		          end
+		        end
+		      next
+		    next
+		    
+		    x = 15-i
+		    y = 14
+		    'dy = -1
+		    
+		    x = 1
+		    y = i
+		    'dx = 1
+		    'dy = 0
+		    
+		    x = 14
+		    y = 15-i
+		    'dx = -1
+		    
+		  next
 		  
 		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
 		  
