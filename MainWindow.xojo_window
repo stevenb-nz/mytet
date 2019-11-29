@@ -285,15 +285,39 @@ End
 		      end
 		    next
 		    
-		    x = 1
-		    y = i
-		    'dx = 1
-		    'dy = 0
+		    y = i-1
+		    for j = 1 to 13
+		      x = j-1
+		      if grid(x,y) <> "" then
+		        s = grid(x,y)
+		        for x = j to 13
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		            end
+		          end
+		        next
+		      end
+		    next
 		    
-		    x = 14
-		    y = 15-i
-		    'dx = -1
-		    
+		    y = 14-i
+		    for j = 1 to 13
+		      x = 14-j
+		      if grid(x,y) <> "" then
+		        s = grid(x,y)
+		        for x = 13-j downto 0
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		            end
+		          end
+		        next
+		      end
+		    next
 		  next
 		  
 		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
