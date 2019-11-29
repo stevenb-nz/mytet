@@ -254,22 +254,36 @@ End
 		    x = i-1
 		    for j = 1 to 13
 		      y = j-1
-		      s = grid(x,y)
-		      for y = j to 13
-		        s=s+grid(x,y)
-		        if isWord(s) then
-		          words = words + 1
-		          if len(s) > letters then
-		            letters = len(s)
-		            'MsgBox s
+		      if grid(x,y) <> "" then
+		        s = grid(x,y)
+		        for y = j to 13
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		            end
 		          end
-		        end
-		      next
+		        next
+		      end
 		    next
 		    
-		    x = 15-i
-		    y = 14
-		    'dy = -1
+		    x = 14-i
+		    for j = 1 to 13
+		      y = 14-j
+		      if grid(x,y) <> "" then
+		        s = grid(x,y)
+		        for y = 13-j downto 0
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		            end
+		          end
+		        next
+		      end
+		    next
 		    
 		    x = 1
 		    y = i
