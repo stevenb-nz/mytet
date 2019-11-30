@@ -252,72 +252,105 @@ End
 		  
 		  for i = 1 to 14
 		    x = i-1
-		    for j = 1 to 13
+		    for j = 1 to 13-x
 		      y = j-1
 		      if grid(x,y) <> "" then
-		        s = grid(x,y)
-		        for y = j to 13
-		          s=s+grid(x,y)
+		        s = grid(x+j,y)
+		        for y = j to 13-(x+1)
+		          s=s+grid(x+y+1,y)
 		          if isWord(s) then
 		            words = words + 1
 		            if len(s) > letters then
 		              letters = len(s)
+		              MsgBox s
 		            end
 		          end
 		        next
 		      end
 		    next
 		    
-		    x = 14-i
-		    for j = 1 to 13
-		      y = 14-j
-		      if grid(x,y) <> "" then
-		        s = grid(x,y)
-		        for y = 13-j downto 0
-		          s=s+grid(x,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		            end
-		          end
-		        next
-		      end
-		    next
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(x,y) <> "" then
+		    's = grid(x,y)
+		    'for y = j to 13
+		    's=s+grid(x,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
 		    
-		    y = i-1
-		    for j = 1 to 13
-		      x = j-1
-		      if grid(x,y) <> "" then
-		        s = grid(x,y)
-		        for x = j to 13
-		          s=s+grid(x,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		            end
-		          end
-		        next
-		      end
-		    next
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(x,y) <> "" then
+		    's = grid(x-j,y)
+		    'for y = j to 13
+		    's=s+grid(x-y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
 		    
-		    y = 14-i
-		    for j = 1 to 13
-		      x = 14-j
-		      if grid(x,y) <> "" then
-		        s = grid(x,y)
-		        for x = 13-j downto 0
-		          s=s+grid(x,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		            end
-		          end
-		        next
-		      end
-		    next
+		    'x = 14-i
+		    'for j = 1 to 13
+		    'y = 14-j
+		    'if grid(x,y) <> "" then
+		    's = grid(x,y)
+		    'for y = 13-j downto 0
+		    's=s+grid(x,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    '
+		    'y = i-1
+		    'for j = 1 to 13
+		    'x = j-1
+		    'if grid(x,y) <> "" then
+		    's = grid(x,y)
+		    'for x = j to 13
+		    's=s+grid(x,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    '
+		    'y = 14-i
+		    'for j = 1 to 13
+		    'x = 14-j
+		    'if grid(x,y) <> "" then
+		    's = grid(x,y)
+		    'for x = 13-j downto 0
+		    's=s+grid(x,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
 		  next
 		  
 		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
