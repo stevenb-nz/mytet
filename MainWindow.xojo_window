@@ -254,57 +254,92 @@ End
 		  
 		  for i = 1 to 14
 		    x = i-1
-		    'for j = 1 to 13-x
-		    'y = j-1
-		    'if grid(x+(j-1),y) <> "" then
-		    's = grid(x+(j-1),y)
-		    'for y = j to 13-x
-		    's=s+grid(x+y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13
-		    'y = j-1
-		    'if grid(x,y) <> "" then
-		    's = grid(x,y)
-		    'for y = j to 13
-		    's=s+grid(x,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    for j = 1 to x-1
+		    for j = 1 to 13-x
 		      y = j-1
-		      if grid(x-(j-1),y) <> "" then
-		        s = grid(x-(j-1),y)
-		        for y = j to x
-		          s=s+grid(x-y,y)
+		      if grid(x+(j-1),y) <> "" then
+		        s = grid(x+(j-1),y)
+		        for y = j to 13-x
+		          s=s+grid(x+y,y)
 		          if isWord(s) then
 		            words = words + 1
 		            if len(s) > letters then
 		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		              ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
 		            end
 		          end
 		        next
 		      end
 		    next
 		    
-		    'x = 14-i
+		    for j = 1 to 13
+		      y = j-1
+		      if grid(x,y) <> "" then
+		        s = grid(x,y)
+		        for y = j to 13
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		              ClearButton.Caption = s + " " + str(x) + ", " + str(j-1)
+		            end
+		          end
+		        next
+		      end
+		    next
+		    '
+		    'for j = 1 to x-1
+		    'y = j-1
+		    'if grid(x-(j-1),y) <> "" then
+		    's = grid(x-(j-1),y)
+		    'for y = j to x
+		    's=s+grid(x-y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    x = 14-i
+		    for j = 1 to x
+		      y = 14-j
+		      if grid(x-(j-1),y) <> "" then
+		        s = grid(x-(j-1),y)
+		        for y = 13-j downto x
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		              ClearButton.Caption = s + " " + str(x) + ", " + str(14-j)
+		            end
+		          end
+		        next
+		      end
+		    next
+		    
+		    for j = 1 to 13
+		      y = 14-j
+		      if grid(x,y) <> "" then
+		        s = grid(x,y)
+		        for y = 13-j downto 0
+		          s=s+grid(x,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		              ClearButton.Caption = s + " " + str(x) + ", " + str(14-j)
+		            end
+		          end
+		        next
+		      end
+		    next
+		    '
 		    'for j = 1 to 13
 		    'y = 14-j
 		    'if grid(x,y) <> "" then
@@ -315,12 +350,13 @@ End
 		    'words = words + 1
 		    'if len(s) > letters then
 		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x) + ", " + str(14-j)
 		    'end
 		    'end
 		    'next
 		    'end
 		    'next
-		    '
+		    
 		    'y = i-1
 		    'for j = 1 to 13
 		    'x = j-1
@@ -332,6 +368,7 @@ End
 		    'words = words + 1
 		    'if len(s) > letters then
 		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(j-1) + ", " + str(y)
 		    'end
 		    'end
 		    'next
@@ -349,6 +386,7 @@ End
 		    'words = words + 1
 		    'if len(s) > letters then
 		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(14-j) + ", " + str(y)
 		    'end
 		    'end
 		    'next
