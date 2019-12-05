@@ -479,7 +479,7 @@ End
 		    
 		  next
 		  
-		  for i = 1 to 13
+		  for i = 1 to 14
 		    x = i-1
 		    
 		    for j = 1 to 13-x
@@ -552,32 +552,32 @@ End
 		    
 		    'for j = 1 to 13-x
 		    'y = j-1
-		    'if grid(x+(j-1),y) <> "" then
-		    's = grid(x+(j-1),y)
+		    'if grid(13-(x+(j-1)),13-y) <> "" then
+		    's = grid(13-(x+(j-1)),13-y)
 		    'for y = j to 13-x
-		    's=s+grid(x+y,y)
+		    's=s+grid(13-(x+y),13-y)
 		    'if isWord(s) then
 		    'words = words + 1
 		    'if len(s) > letters then
 		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		    'ClearButton.Caption = s + " " + str(13-(x+(j-1))) + ", " + str(13-(j-1))
 		    'end
 		    'end
 		    'next
 		    'end
 		    'next
-		    
+		    '
 		    'for j = 1 to x-1
 		    'y = j-1
-		    'if grid(x-(j-1),y) <> "" then
-		    's = grid(x-(j-1),y)
+		    'if grid(13-(x-(j-1)),13-y) <> "" then
+		    's = grid(13-(x-(j-1)),13-y)
 		    'for y = j to x
-		    's=s+grid(x-y,y)
+		    's=s+grid(13-(x-y),13-y)
 		    'if isWord(s) then
 		    'words = words + 1
 		    'if len(s) > letters then
 		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		    'ClearButton.Caption = s + " " + str(13-(x-(j-1))) + ", " + str(13-(j-1))
 		    'end
 		    'end
 		    'next
