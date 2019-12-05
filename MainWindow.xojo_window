@@ -194,59 +194,7 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub displayletter(g as graphics, x as integer, y as integer, letter as string)
-		  g.foreColor = rgb(255,255,191)
-		  g.fillrect x*30-28,y*30-28,27,27
-		  g.foreColor = rgb(0,0,0)
-		  g.TextFont="Courier"
-		  g.TextSize=24
-		  g.DrawString letter, x*30-25, y*30-9
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub handleBadWord(letters as String)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub handleGoodWord(word as string)
-		  dim dx,dy,i,j as integer
-		  
-		  unplaced = unplaced + word
-		  j = max(abs(mdx - mux),abs(mdy - muy))
-		  dx = Sign(mux - mdx)
-		  dy = sign(muy - mdy)
-		  for i = 0 to j
-		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
-		  next
-		  updateLabel
-		  Refresh
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Function isWord(word as String) As Boolean
-		  dim sql as string
-		  sql = "SELECT * from Words WHERE Word='"+word+"'"
-		  
-		  dim data as RecordSet
-		  data = app.wordsDB.SQLSelect(sql)
-		  
-		  if data.EOF then
-		    return false
-		  else
-		    return true
-		  end
-		  
-		End Function
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub updateLabel()
+		Sub BUupdateLabel()
 		  dim i, j, x, y, words, letters as integer
 		  dim s as string
 		  
@@ -392,6 +340,277 @@ End
 		    'next
 		    'end
 		    'next
+		  next
+		  
+		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub displayletter(g as graphics, x as integer, y as integer, letter as string)
+		  g.foreColor = rgb(255,255,191)
+		  g.fillrect x*30-28,y*30-28,27,27
+		  g.foreColor = rgb(0,0,0)
+		  g.TextFont="Courier"
+		  g.TextSize=24
+		  g.DrawString letter, x*30-25, y*30-9
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub handleBadWord(letters as String)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub handleGoodWord(word as string)
+		  dim dx,dy,i,j as integer
+		  
+		  unplaced = unplaced + word
+		  j = max(abs(mdx - mux),abs(mdy - muy))
+		  dx = Sign(mux - mdx)
+		  dy = sign(muy - mdy)
+		  for i = 0 to j
+		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
+		  next
+		  updateLabel
+		  Refresh
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Function isWord(word as String) As Boolean
+		  dim sql as string
+		  sql = "SELECT * from Words WHERE Word='"+word+"'"
+		  
+		  dim data as RecordSet
+		  data = app.wordsDB.SQLSelect(sql)
+		  
+		  if data.EOF then
+		    return false
+		  else
+		    return true
+		  end
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub updateLabel()
+		  dim i, j, x, y, words, letters as integer
+		  dim s as string
+		  
+		  ClearButton.Caption = "Clear"
+		  
+		  for i = 1 to 14
+		    x = i-1
+		    
+		    'for j = 1 to 13-x
+		    'y = j-1
+		    'if grid(x+(j-1),y) <> "" then
+		    's = grid(x+(j-1),y)
+		    'for y = j to 13-x
+		    's=s+grid(x+y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(x,y) <> "" then
+		    's = grid(x,y)
+		    'for y = j to 13
+		    's=s+grid(x,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to x-1
+		    'y = j-1
+		    'if grid(x-(j-1),y) <> "" then
+		    's = grid(x-(j-1),y)
+		    'for y = j to x
+		    's=s+grid(x-y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to 13-x
+		    'y = j-1
+		    'if grid(x+(j-1),y) <> "" then
+		    's = grid(x+(j-1),y)
+		    'for y = j to 13-x
+		    's=s+grid(x+y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(13-y,x) <> "" then
+		    's = grid(13-y,x)
+		    'for y = j to 13
+		    's=s+grid(13-y,x)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(14-j) + ", " + str(x)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to x-1
+		    'y = j-1
+		    'if grid(x-(j-1),y) <> "" then
+		    's = grid(x-(j-1),y)
+		    'for y = j to x
+		    's=s+grid(x-y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to 13-x
+		    'y = j-1
+		    'if grid(x+(j-1),y) <> "" then
+		    's = grid(x+(j-1),y)
+		    'for y = j to 13-x
+		    's=s+grid(x+y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(13-x,13-y) <> "" then
+		    's = grid(13-x,13-y)
+		    'for y = j to 13
+		    's=s+grid(13-x,13-y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(13-x) + ", " + str(14-j)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to x-1
+		    'y = j-1
+		    'if grid(x-(j-1),y) <> "" then
+		    's = grid(x-(j-1),y)
+		    'for y = j to x
+		    's=s+grid(x-y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    '
+		    'for j = 1 to 13-x
+		    'y = j-1
+		    'if grid(x+(j-1),y) <> "" then
+		    's = grid(x+(j-1),y)
+		    'for y = j to 13-x
+		    's=s+grid(x+y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    for j = 1 to 13
+		      y = j-1
+		      if grid(y,13-x) <> "" then
+		        s = grid(y,13-x)
+		        for y = j to 13
+		          s=s+grid(y,13-x)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		              ClearButton.Caption = s + " " + str(j-1) + ", " + str(13-x)
+		            end
+		          end
+		        next
+		      end
+		    next
+		    
+		    'for j = 1 to x-1
+		    'y = j-1
+		    'if grid(x-(j-1),y) <> "" then
+		    's = grid(x-(j-1),y)
+		    'for y = j to x
+		    's=s+grid(x-y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
 		  next
 		  
 		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
