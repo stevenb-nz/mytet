@@ -194,160 +194,6 @@ End
 
 
 	#tag Method, Flags = &h0
-		Sub BUupdateLabel()
-		  dim i, j, x, y, words, letters as integer
-		  dim s as string
-		  
-		  ClearButton.Caption = "Clear"
-		  
-		  for i = 1 to 14
-		    x = i-1
-		    for j = 1 to 13-x
-		      y = j-1
-		      if grid(x+(j-1),y) <> "" then
-		        s = grid(x+(j-1),y)
-		        for y = j to 13-x
-		          s=s+grid(x+y,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
-		            end
-		          end
-		        next
-		      end
-		    next
-		    
-		    for j = 1 to 13
-		      y = j-1
-		      if grid(x,y) <> "" then
-		        s = grid(x,y)
-		        for y = j to 13
-		          s=s+grid(x,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x) + ", " + str(j-1)
-		            end
-		          end
-		        next
-		      end
-		    next
-		    '
-		    'for j = 1 to x-1
-		    'y = j-1
-		    'if grid(x-(j-1),y) <> "" then
-		    's = grid(x-(j-1),y)
-		    'for y = j to x
-		    's=s+grid(x-y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    x = 14-i
-		    for j = 1 to x
-		      y = 14-j
-		      if grid(x-(j-1),y) <> "" then
-		        s = grid(x-(j-1),y)
-		        for y = 13-j downto x
-		          s=s+grid(x,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x) + ", " + str(14-j)
-		            end
-		          end
-		        next
-		      end
-		    next
-		    
-		    for j = 1 to 13
-		      y = 14-j
-		      if grid(x,y) <> "" then
-		        s = grid(x,y)
-		        for y = 13-j downto 0
-		          s=s+grid(x,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x) + ", " + str(14-j)
-		            end
-		          end
-		        next
-		      end
-		    next
-		    '
-		    'for j = 1 to 13
-		    'y = 14-j
-		    'if grid(x,y) <> "" then
-		    's = grid(x,y)
-		    'for y = 13-j downto 0
-		    's=s+grid(x,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x) + ", " + str(14-j)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'y = i-1
-		    'for j = 1 to 13
-		    'x = j-1
-		    'if grid(x,y) <> "" then
-		    's = grid(x,y)
-		    'for x = j to 13
-		    's=s+grid(x,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(j-1) + ", " + str(y)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    '
-		    'y = 14-i
-		    'for j = 1 to 13
-		    'x = 14-j
-		    'if grid(x,y) <> "" then
-		    's = grid(x,y)
-		    'for x = 13-j downto 0
-		    's=s+grid(x,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(14-j) + ", " + str(y)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		  next
-		  
-		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub displayletter(g as graphics, x as integer, y as integer, letter as string)
 		  g.foreColor = rgb(255,255,191)
 		  g.fillrect x*30-28,y*30-28,27,27
@@ -401,221 +247,104 @@ End
 
 	#tag Method, Flags = &h0
 		Sub updateLabel()
-		  dim i, j, x, y, words, letters as integer
-		  dim s as string
+		  dim i, x, y, words, letters as integer
+		  dim su,sul,sl,sdl,sd,sdr,sr,sur as string
 		  
-		  ClearButton.Caption = "Clear"
-		  
-		  for i = 1 to 14
-		    x = i-1
-		    
-		    'for j = 1 to 13
-		    'y = j-1
-		    'if grid(x,y) <> "" then
-		    's = grid(x,y)
-		    'for y = j to 13
-		    's=s+grid(x,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13
-		    'y = j-1
-		    'if grid(13-y,x) <> "" then
-		    's = grid(13-y,x)
-		    'for y = j to 13
-		    's=s+grid(13-y,x)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(14-j) + ", " + str(x)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13
-		    'y = j-1
-		    'if grid(13-x,13-y) <> "" then
-		    's = grid(13-x,13-y)
-		    'for y = j to 13
-		    's=s+grid(13-x,13-y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(13-x) + ", " + str(14-j)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13
-		    'y = j-1
-		    'if grid(y,13-x) <> "" then
-		    's = grid(y,13-x)
-		    'for y = j to 13
-		    's=s+grid(y,13-x)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(j-1) + ", " + str(13-x)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		  next
-		  
-		  for i = 1 to 14
-		    x = i-1
-		    
-		    for j = 1 to 13-x
-		      y = j-1
-		      if grid(x+(j-1),y) <> "" then
-		        s = grid(x+(j-1),y)
-		        for y = j to 13-x
-		          s=s+grid(x+y,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		  for x = 0 to 13
+		    for y = 0 to 13
+		      su = ""
+		      sul = ""
+		      sl = ""
+		      sdl = ""
+		      sd = ""
+		      sdr = ""
+		      sr = ""
+		      sur = ""
+		      if grid(x,y) <> "" then
+		        su = grid(x,y)
+		        sul = grid(x,y)
+		        sl = grid(x,y)
+		        sdl = grid(x,y)
+		        sd = grid(x,y)
+		        sdr = grid(x,y)
+		        sr = grid(x,y)
+		        sur = grid(x,y)
+		        for i = 1 to 13
+		          if y-i > -1 then
+		            su = su + grid(x,y-i)
+		            if isWord(su) then
+		              words = words + 1
+		              if len(su) > letters then
+		                letters = len(su)
+		              end
+		            end
+		          end
+		          if x-i > -1 and y-i > -1 then
+		            sul = sul + grid(x-i,y-i)
+		            if isWord(sul) then
+		              words = words + 1
+		              if len(sul) > letters then
+		                letters = len(sul)
+		              end
+		            end
+		          end
+		          if x-i > -1 then
+		            sl = sl + grid(x-i,y)
+		            if isWord(sl) then
+		              words = words + 1
+		              if len(sl) > letters then
+		                letters = len(sl)
+		              end
+		            end
+		          end
+		          if x-i > -1 and y+i < 14 then
+		            sdl = sdl + grid(x-i,y+i)
+		            if isWord(sdl) then
+		              words = words + 1
+		              if len(sdl) > letters then
+		                letters = len(sdl)
+		              end
+		            end
+		          end
+		          if y+i < 14 then
+		            sd = sd + grid(x,y+i)
+		            if isWord(sd) then
+		              words = words + 1
+		              if len(sd) > letters then
+		                letters = len(sd)
+		              end
+		            end
+		          end
+		          if x+i < 14 and y+i < 14 then
+		            sdr = sdr + grid(x+i,y+i)
+		            if isWord(sdr) then
+		              words = words + 1
+		              if len(sdr) > letters then
+		                letters = len(sdr)
+		              end
+		            end
+		          end
+		          if x+i < 14 then
+		            sr = sr + grid(x+i,y)
+		            if isWord(sr) then
+		              words = words + 1
+		              if len(sr) > letters then
+		                letters = len(sr)
+		              end
+		            end
+		          end
+		          if x+i < 14 and y-i > -1 then
+		            sur = sur + grid(x+i,y-i)
+		            if isWord(sur) then
+		              words = words + 1
+		              if len(sur) > letters then
+		                letters = len(sur)
+		              end
 		            end
 		          end
 		        next
 		      end
 		    next
-		    
-		    for j = 1 to x-1
-		      y = j-1
-		      if grid(x-(j-1),y) <> "" then
-		        s = grid(x-(j-1),y)
-		        for y = j to x
-		          s=s+grid(x-y,y)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
-		            end
-		          end
-		        next
-		      end
-		    next
-		    
-		    'for j = 1 to 13-x
-		    'y = j-1
-		    'if grid(x+(j-1),y) <> "" then
-		    's = grid(x+(j-1),y)
-		    'for y = j to 13-x
-		    's=s+grid(x+y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to x-1
-		    'y = j-1
-		    'if grid(x-(j-1),y) <> "" then
-		    's = grid(x-(j-1),y)
-		    'for y = j to x
-		    's=s+grid(x-y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13-x
-		    'y = j-1
-		    'if grid(13-(x+(j-1)),13-y) <> "" then
-		    's = grid(13-(x+(j-1)),13-y)
-		    'for y = j to 13-x
-		    's=s+grid(13-(x+y),13-y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(13-(x+(j-1))) + ", " + str(13-(j-1))
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    '
-		    'for j = 1 to x-1
-		    'y = j-1
-		    'if grid(13-(x-(j-1)),13-y) <> "" then
-		    's = grid(13-(x-(j-1)),13-y)
-		    'for y = j to x
-		    's=s+grid(13-(x-y),13-y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(13-(x-(j-1))) + ", " + str(13-(j-1))
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    '
-		    'for j = 1 to 13-x
-		    'y = j-1
-		    'if grid(x+(j-1),y) <> "" then
-		    's = grid(x+(j-1),y)
-		    'for y = j to 13-x
-		    's=s+grid(x+y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to x-1
-		    'y = j-1
-		    'if grid(x-(j-1),y) <> "" then
-		    's = grid(x-(j-1),y)
-		    'for y = j to x
-		    's=s+grid(x-y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
 		  next
 		  
 		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
