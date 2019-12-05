@@ -409,23 +409,6 @@ End
 		  for i = 1 to 14
 		    x = i-1
 		    
-		    'for j = 1 to 13-x
-		    'y = j-1
-		    'if grid(x+(j-1),y) <> "" then
-		    's = grid(x+(j-1),y)
-		    'for y = j to 13-x
-		    's=s+grid(x+y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
 		    'for j = 1 to 13
 		    'y = j-1
 		    'if grid(x,y) <> "" then
@@ -437,40 +420,6 @@ End
 		    'if len(s) > letters then
 		    'letters = len(s)
 		    'ClearButton.Caption = s + " " + str(x) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to x-1
-		    'y = j-1
-		    'if grid(x-(j-1),y) <> "" then
-		    's = grid(x-(j-1),y)
-		    'for y = j to x
-		    's=s+grid(x-y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13-x
-		    'y = j-1
-		    'if grid(x+(j-1),y) <> "" then
-		    's = grid(x+(j-1),y)
-		    'for y = j to 13-x
-		    's=s+grid(x+y,y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
 		    'end
 		    'end
 		    'next
@@ -494,6 +443,96 @@ End
 		    'end
 		    'next
 		    
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(13-x,13-y) <> "" then
+		    's = grid(13-x,13-y)
+		    'for y = j to 13
+		    's=s+grid(13-x,13-y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(13-x) + ", " + str(14-j)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		    'for j = 1 to 13
+		    'y = j-1
+		    'if grid(y,13-x) <> "" then
+		    's = grid(y,13-x)
+		    'for y = j to 13
+		    's=s+grid(y,13-x)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(j-1) + ", " + str(13-x)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
+		  next
+		  
+		  for i = 1 to 13
+		    x = i-1
+		    
+		    for j = 1 to 13-x
+		      y = j-1
+		      if grid(x+(j-1),y) <> "" then
+		        s = grid(x+(j-1),y)
+		        for y = j to 13-x
+		          s=s+grid(x+y,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		              ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		            end
+		          end
+		        next
+		      end
+		    next
+		    
+		    for j = 1 to x-1
+		      y = j-1
+		      if grid(x-(j-1),y) <> "" then
+		        s = grid(x-(j-1),y)
+		        for y = j to x
+		          s=s+grid(x-y,y)
+		          if isWord(s) then
+		            words = words + 1
+		            if len(s) > letters then
+		              letters = len(s)
+		              ClearButton.Caption = s + " " + str(x-(j-1)) + ", " + str(j-1)
+		            end
+		          end
+		        next
+		      end
+		    next
+		    
+		    'for j = 1 to 13-x
+		    'y = j-1
+		    'if grid(x+(j-1),y) <> "" then
+		    's = grid(x+(j-1),y)
+		    'for y = j to 13-x
+		    's=s+grid(x+y,y)
+		    'if isWord(s) then
+		    'words = words + 1
+		    'if len(s) > letters then
+		    'letters = len(s)
+		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
+		    'end
+		    'end
+		    'next
+		    'end
+		    'next
+		    
 		    'for j = 1 to x-1
 		    'y = j-1
 		    'if grid(x-(j-1),y) <> "" then
@@ -522,23 +561,6 @@ End
 		    'if len(s) > letters then
 		    'letters = len(s)
 		    'ClearButton.Caption = s + " " + str(x+(j-1)) + ", " + str(j-1)
-		    'end
-		    'end
-		    'next
-		    'end
-		    'next
-		    
-		    'for j = 1 to 13
-		    'y = j-1
-		    'if grid(13-x,13-y) <> "" then
-		    's = grid(13-x,13-y)
-		    'for y = j to 13
-		    's=s+grid(13-x,13-y)
-		    'if isWord(s) then
-		    'words = words + 1
-		    'if len(s) > letters then
-		    'letters = len(s)
-		    'ClearButton.Caption = s + " " + str(13-x) + ", " + str(14-j)
 		    'end
 		    'end
 		    'next
@@ -578,23 +600,6 @@ End
 		    'next
 		    'end
 		    'next
-		    
-		    for j = 1 to 13
-		      y = j-1
-		      if grid(y,13-x) <> "" then
-		        s = grid(y,13-x)
-		        for y = j to 13
-		          s=s+grid(y,13-x)
-		          if isWord(s) then
-		            words = words + 1
-		            if len(s) > letters then
-		              letters = len(s)
-		              ClearButton.Caption = s + " " + str(j-1) + ", " + str(13-x)
-		            end
-		          end
-		        next
-		      end
-		    next
 		    
 		    'for j = 1 to x-1
 		    'y = j-1
