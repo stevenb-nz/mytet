@@ -131,7 +131,7 @@ End
 #tag WindowCode
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  dim tempx, tempy as integer
+		  dim i, j, tempx, tempy as integer
 		  
 		  if StartButton.Enabled = false then
 		    mdx = 0
@@ -142,6 +142,14 @@ End
 		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 15 then
 		      mdx = tempx
 		      mdy = tempy
+		      for i = 1 to 14
+		        for j = 1 to 14
+		          if i=mdx or j=mdy or i-j=mdx-mdy or i+j=mdx+mdy then
+		            gridhl(i-1,j-1) = true
+		          end
+		        next
+		      next
+		      Refresh
 		    end
 		    return true
 		  else
@@ -157,6 +165,12 @@ End
 		  dim s as string
 		  
 		  if mdx > 0 and mdy > 0 then
+		    for i = 1 to 14
+		      for j = 1 to 14
+		        gridhl(i-1,j-1) = false
+		      next
+		    next
+		    Refresh
 		    mux = (x-1) \ 30 + 1
 		    muy = (y-1) \ 30 + 1
 		    j = max(abs(mdx - mux),abs(mdy - muy))
@@ -195,7 +209,11 @@ End
 
 	#tag Method, Flags = &h0
 		Sub displayletter(g as graphics, x as integer, y as integer, letter as string)
-		  g.foreColor = rgb(255,255,191)
+		  if gridhl(x-1,y-1) then
+		    g.foreColor = rgb(191,191,95)
+		  else
+		    g.foreColor = rgb(255,255,191)
+		  end
 		  g.fillrect x*30-28,y*30-28,27,27
 		  g.foreColor = rgb(0,0,0)
 		  g.TextFont="Courier"
@@ -271,74 +289,90 @@ End
 		        sur = grid(x,y)
 		        for i = 1 to 13
 		          if y-i > -1 then
-		            su = su + grid(x,y-i)
-		            if isWord(su) then
-		              words = words + 1
-		              if len(su) > letters then
-		                letters = len(su)
+		            if grid(x,y-i) <> "" then
+		              su = su + grid(x,y-i)
+		              if isWord(su) then
+		                words = words + 1
+		                if len(su) > letters then
+		                  letters = len(su)
+		                end
 		              end
 		            end
 		          end
 		          if x-i > -1 and y-i > -1 then
-		            sul = sul + grid(x-i,y-i)
-		            if isWord(sul) then
-		              words = words + 1
-		              if len(sul) > letters then
-		                letters = len(sul)
+		            if grid(x-i,y-i) <> "" then
+		              sul = sul + grid(x-i,y-i)
+		              if isWord(sul) then
+		                words = words + 1
+		                if len(sul) > letters then
+		                  letters = len(sul)
+		                end
 		              end
 		            end
 		          end
 		          if x-i > -1 then
-		            sl = sl + grid(x-i,y)
-		            if isWord(sl) then
-		              words = words + 1
-		              if len(sl) > letters then
-		                letters = len(sl)
+		            if grid(x-i,y) <> "" then
+		              sl = sl + grid(x-i,y)
+		              if isWord(sl) then
+		                words = words + 1
+		                if len(sl) > letters then
+		                  letters = len(sl)
+		                end
 		              end
 		            end
 		          end
 		          if x-i > -1 and y+i < 14 then
-		            sdl = sdl + grid(x-i,y+i)
-		            if isWord(sdl) then
-		              words = words + 1
-		              if len(sdl) > letters then
-		                letters = len(sdl)
+		            if grid(x-i,y+i) <> "" then
+		              sdl = sdl + grid(x-i,y+i)
+		              if isWord(sdl) then
+		                words = words + 1
+		                if len(sdl) > letters then
+		                  letters = len(sdl)
+		                end
 		              end
 		            end
 		          end
 		          if y+i < 14 then
-		            sd = sd + grid(x,y+i)
-		            if isWord(sd) then
-		              words = words + 1
-		              if len(sd) > letters then
-		                letters = len(sd)
+		            if grid(x,y+i) <> "" then
+		              sd = sd + grid(x,y+i)
+		              if isWord(sd) then
+		                words = words + 1
+		                if len(sd) > letters then
+		                  letters = len(sd)
+		                end
 		              end
 		            end
 		          end
 		          if x+i < 14 and y+i < 14 then
-		            sdr = sdr + grid(x+i,y+i)
-		            if isWord(sdr) then
-		              words = words + 1
-		              if len(sdr) > letters then
-		                letters = len(sdr)
+		            if grid(x+i,y+i) <> "" then
+		              sdr = sdr + grid(x+i,y+i)
+		              if isWord(sdr) then
+		                words = words + 1
+		                if len(sdr) > letters then
+		                  letters = len(sdr)
+		                end
 		              end
 		            end
 		          end
 		          if x+i < 14 then
-		            sr = sr + grid(x+i,y)
-		            if isWord(sr) then
-		              words = words + 1
-		              if len(sr) > letters then
-		                letters = len(sr)
+		            if grid(x+i,y) <> "" then
+		              sr = sr + grid(x+i,y)
+		              if isWord(sr) then
+		                words = words + 1
+		                if len(sr) > letters then
+		                  letters = len(sr)
+		                end
 		              end
 		            end
 		          end
 		          if x+i < 14 and y-i > -1 then
-		            sur = sur + grid(x+i,y-i)
-		            if isWord(sur) then
-		              words = words + 1
-		              if len(sur) > letters then
-		                letters = len(sur)
+		            if grid(x+i,y-i) <> "" then
+		              sur = sur + grid(x+i,y-i)
+		              if isWord(sur) then
+		                words = words + 1
+		                if len(sur) > letters then
+		                  letters = len(sur)
+		                end
 		              end
 		            end
 		          end
@@ -355,6 +389,10 @@ End
 
 	#tag Property, Flags = &h0
 		grid(13,13) As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		gridhl(13,13) As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
