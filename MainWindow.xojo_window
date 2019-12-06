@@ -264,6 +264,17 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub processWord(word as string, byref words as integer, byref letters as integer)
+		  if isWord(word) then
+		    words = words + 1
+		    if len(word) > letters then
+		      letters = len(word)
+		    end
+		  end
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub updateLabel()
 		  dim i, x, y, words, letters as integer
 		  dim su,sul,sl,sdl,sd,sdr,sr,sur as string
@@ -291,89 +302,49 @@ End
 		          if y-i > -1 then
 		            if grid(x,y-i) <> "" then
 		              su = su + grid(x,y-i)
-		              if isWord(su) then
-		                words = words + 1
-		                if len(su) > letters then
-		                  letters = len(su)
-		                end
-		              end
+		              processWord(su,words,letters)
 		            end
 		          end
 		          if x-i > -1 and y-i > -1 then
 		            if grid(x-i,y-i) <> "" then
 		              sul = sul + grid(x-i,y-i)
-		              if isWord(sul) then
-		                words = words + 1
-		                if len(sul) > letters then
-		                  letters = len(sul)
-		                end
-		              end
+		              processWord(sul,words,letters)
 		            end
 		          end
 		          if x-i > -1 then
 		            if grid(x-i,y) <> "" then
 		              sl = sl + grid(x-i,y)
-		              if isWord(sl) then
-		                words = words + 1
-		                if len(sl) > letters then
-		                  letters = len(sl)
-		                end
-		              end
+		              processWord(sl,words,letters)
 		            end
 		          end
 		          if x-i > -1 and y+i < 14 then
 		            if grid(x-i,y+i) <> "" then
 		              sdl = sdl + grid(x-i,y+i)
-		              if isWord(sdl) then
-		                words = words + 1
-		                if len(sdl) > letters then
-		                  letters = len(sdl)
-		                end
-		              end
+		              processWord(sdl,words,letters)
 		            end
 		          end
 		          if y+i < 14 then
 		            if grid(x,y+i) <> "" then
 		              sd = sd + grid(x,y+i)
-		              if isWord(sd) then
-		                words = words + 1
-		                if len(sd) > letters then
-		                  letters = len(sd)
-		                end
-		              end
+		              processWord(sd,words,letters)
 		            end
 		          end
 		          if x+i < 14 and y+i < 14 then
 		            if grid(x+i,y+i) <> "" then
 		              sdr = sdr + grid(x+i,y+i)
-		              if isWord(sdr) then
-		                words = words + 1
-		                if len(sdr) > letters then
-		                  letters = len(sdr)
-		                end
-		              end
+		              processWord(sdr,words,letters)
 		            end
 		          end
 		          if x+i < 14 then
 		            if grid(x+i,y) <> "" then
 		              sr = sr + grid(x+i,y)
-		              if isWord(sr) then
-		                words = words + 1
-		                if len(sr) > letters then
-		                  letters = len(sr)
-		                end
-		              end
+		              processWord(sr,words,letters)
 		            end
 		          end
 		          if x+i < 14 and y-i > -1 then
 		            if grid(x+i,y-i) <> "" then
 		              sur = sur + grid(x+i,y-i)
-		              if isWord(sur) then
-		                words = words + 1
-		                if len(sur) > letters then
-		                  letters = len(sur)
-		                end
-		              end
+		              processWord(sur,words,letters)
 		            end
 		          end
 		        next
