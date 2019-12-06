@@ -264,20 +264,22 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub processWord(word as string, byref words as integer, byref letters as integer)
+		Sub processWord(word as string, byref words as integer, byref letters as integer, byref longword as String)
 		  if isWord(word) then
 		    words = words + 1
 		    if len(word) > letters then
 		      letters = len(word)
+		      longword = word
 		    end
 		  end
+		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub updateLabel()
 		  dim i, x, y, words, letters as integer
-		  dim su,sul,sl,sdl,sd,sdr,sr,sur as string
+		  dim longword,su,sul,sl,sdl,sd,sdr,sr,sur as string
 		  
 		  for x = 0 to 13
 		    for y = 0 to 13
@@ -302,49 +304,49 @@ End
 		          if y-i > -1 then
 		            if grid(x,y-i) <> "" then
 		              su = su + grid(x,y-i)
-		              processWord(su,words,letters)
+		              processWord(su,words,letters,longword)
 		            end
 		          end
 		          if x-i > -1 and y-i > -1 then
 		            if grid(x-i,y-i) <> "" then
 		              sul = sul + grid(x-i,y-i)
-		              processWord(sul,words,letters)
+		              processWord(sul,words,letters,longword)
 		            end
 		          end
 		          if x-i > -1 then
 		            if grid(x-i,y) <> "" then
 		              sl = sl + grid(x-i,y)
-		              processWord(sl,words,letters)
+		              processWord(sl,words,letters,longword)
 		            end
 		          end
 		          if x-i > -1 and y+i < 14 then
 		            if grid(x-i,y+i) <> "" then
 		              sdl = sdl + grid(x-i,y+i)
-		              processWord(sdl,words,letters)
+		              processWord(sdl,words,letters,longword)
 		            end
 		          end
 		          if y+i < 14 then
 		            if grid(x,y+i) <> "" then
 		              sd = sd + grid(x,y+i)
-		              processWord(sd,words,letters)
+		              processWord(sd,words,letters,longword)
 		            end
 		          end
 		          if x+i < 14 and y+i < 14 then
 		            if grid(x+i,y+i) <> "" then
 		              sdr = sdr + grid(x+i,y+i)
-		              processWord(sdr,words,letters)
+		              processWord(sdr,words,letters,longword)
 		            end
 		          end
 		          if x+i < 14 then
 		            if grid(x+i,y) <> "" then
 		              sr = sr + grid(x+i,y)
-		              processWord(sr,words,letters)
+		              processWord(sr,words,letters,longword)
 		            end
 		          end
 		          if x+i < 14 and y-i > -1 then
 		            if grid(x+i,y-i) <> "" then
 		              sur = sur + grid(x+i,y-i)
-		              processWord(sur,words,letters)
+		              processWord(sur,words,letters,longword)
 		            end
 		          end
 		        next
@@ -352,7 +354,7 @@ End
 		    next
 		  next
 		  
-		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max"
+		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ longword + " max"
 		  
 		End Sub
 	#tag EndMethod
