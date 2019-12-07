@@ -440,6 +440,12 @@ End
 #tag Events infoLabel
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  dim temp() as string
+		  
+		  temp = longword.split(", ")
+		  temp.Sort
+		  longword = Join(temp,", ")
+		  
 		  MsgBox longword
 		  
 		End Function
@@ -695,5 +701,10 @@ End
 		Name="muy"
 		Group="Behavior"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="longword"
+		Group="Behavior"
+		Type="String"
 	#tag EndViewProperty
 #tag EndViewBehavior
