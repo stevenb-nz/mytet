@@ -9,6 +9,12 @@ Inherits Application
 	#tag EndEvent
 
 	#tag Event
+		Sub EnableMenuItems()
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Open()
 		  wordsDB = new SQLiteDatabase
 		  wordsDB.DatabaseFile = SpecialFolder.Documents.Child("Words.sqlite")
@@ -19,6 +25,15 @@ Inherits Application
 		  
 		End Sub
 	#tag EndEvent
+
+
+	#tag MenuHandler
+		Function EditUndo() As Boolean Handles EditUndo.Action
+			
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
 
 
 	#tag Property, Flags = &h0

@@ -706,5 +706,6 @@ End
 		Name="longword"
 		Group="Behavior"
 		Type="String"
+		EditorType="MultiLineEditor"
 	#tag EndViewProperty
 #tag EndViewBehavior
