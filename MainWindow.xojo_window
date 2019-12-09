@@ -225,6 +225,16 @@ End
 
 	#tag Method, Flags = &h0
 		Sub handleBadWord(letters as String)
+		  dim dx,dy,i,j as integer
+		  
+		  j = max(abs(mdx - mux),abs(mdy - muy))
+		  dx = Sign(mux - mdx)
+		  dy = sign(muy - mdy)
+		  for i = 0 to j
+		    grid(mdx-1+i*dx,mdy-1+i*dy) = mid(letters,j-i+1,1)
+		  next
+		  updateLabel
+		  Refresh
 		  
 		End Sub
 	#tag EndMethod
