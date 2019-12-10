@@ -10,6 +10,11 @@ Inherits Application
 
 	#tag Event
 		Sub EnableMenuItems()
+		  if MainWindow.undo.Ubound < 0 then
+		    EditUndo.Enabled = false
+		  else
+		    EditUndo.Enabled = true
+		  end
 		  
 		End Sub
 	#tag EndEvent
@@ -30,6 +35,13 @@ Inherits Application
 	#tag MenuHandler
 		Function EditUndo() As Boolean Handles EditUndo.Action
 			
+			
+			
+			'newundoitem = new XYLetter
+			'newundoitem.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
+			'newundoitem.x = mdx-1+i*dx
+			'newundoitem.y = mdy-1+i*dy
+			'undo.Append newundoitem
 			Return True
 			
 		End Function

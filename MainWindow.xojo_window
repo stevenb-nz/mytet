@@ -226,29 +226,42 @@ End
 	#tag Method, Flags = &h0
 		Sub handleBadWord(letters as String)
 		  dim dx,dy,i,j as integer
+		  dim newundoitem as XYLetter
 		  
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  if j = len(letters)-1 then
 		    dx = Sign(mux - mdx)
 		    dy = sign(muy - mdy)
 		    for i = 0 to j
+		      newundoitem = new XYLetter
+		      newundoitem.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
+		      newundoitem.x = mdx-1+i*dx
+		      newundoitem.y = mdy-1+i*dy
+		      undo.Append newundoitem
 		      grid(mdx-1+i*dx,mdy-1+i*dy) = mid(letters,j-i+1,1)
 		    next
 		    updateLabel
 		    Refresh
 		  end
+		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub handleGoodWord(word as string)
 		  dim dx,dy,i,j as integer
+		  dim newundoitem as XYLetter
 		  
 		  unplaced = unplaced + word
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  dx = Sign(mux - mdx)
 		  dy = sign(muy - mdy)
 		  for i = 0 to j
+		    newundoitem = new XYLetter
+		    newundoitem.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
+		    newundoitem.x = mdx-1+i*dx
+		    newundoitem.y = mdy-1+i*dy
+		    undo.Append newundoitem
 		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
 		  next
 		  updateLabel
