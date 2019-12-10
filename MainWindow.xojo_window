@@ -226,20 +226,23 @@ End
 	#tag Method, Flags = &h0
 		Sub handleBadWord(letters as String)
 		  dim dx,dy,i,j as integer
-		  dim newundoitem as XYLetter
+		  dim newundoitem as UndoItem
+		  dim newxyletter as XYLetter
 		  
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  if j = len(letters)-1 then
 		    dx = Sign(mux - mdx)
 		    dy = sign(muy - mdy)
+		    newundoitem = new UndoItem
 		    for i = 0 to j
-		      newundoitem = new XYLetter
-		      newundoitem.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
-		      newundoitem.x = mdx-1+i*dx
-		      newundoitem.y = mdy-1+i*dy
-		      undo.Append newundoitem
+		      newxyletter = new XYLetter
+		      newxyletter.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
+		      newxyletter.x = mdx-1+i*dx
+		      newxyletter.y = mdy-1+i*dy
+		      newundoitem.xyletters.Append newxyletter
 		      grid(mdx-1+i*dx,mdy-1+i*dy) = mid(letters,j-i+1,1)
 		    next
+		    undo.Append newundoitem
 		    updateLabel
 		    Refresh
 		  end
@@ -250,20 +253,23 @@ End
 	#tag Method, Flags = &h0
 		Sub handleGoodWord(word as string)
 		  dim dx,dy,i,j as integer
-		  dim newundoitem as XYLetter
+		  dim newundoitem as UndoItem
+		  dim newxyletter as XYLetter
 		  
 		  unplaced = unplaced + word
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  dx = Sign(mux - mdx)
 		  dy = sign(muy - mdy)
+		  newundoitem = new UndoItem
 		  for i = 0 to j
-		    newundoitem = new XYLetter
-		    newundoitem.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
-		    newundoitem.x = mdx-1+i*dx
-		    newundoitem.y = mdy-1+i*dy
-		    undo.Append newundoitem
+		    newxyletter = new XYLetter
+		    newxyletter.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
+		    newxyletter.x = mdx-1+i*dx
+		    newxyletter.y = mdy-1+i*dy
+		    newundoitem.xyletters.Append newxyletter
 		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
 		  next
+		  undo.Append newundoitem
 		  updateLabel
 		  Refresh
 		  
@@ -415,7 +421,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		undo() As XYLetter
+		undo() As UndoItem
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
