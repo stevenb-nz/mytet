@@ -402,6 +402,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		undo() As XYLetter
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		unplaced As String
 	#tag EndProperty
 
