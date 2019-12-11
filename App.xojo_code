@@ -34,14 +34,18 @@ Inherits Application
 
 	#tag MenuHandler
 		Function EditUndo() As Boolean Handles EditUndo.Action
+			dim i as integer
+			dim item as UndoItem
 			
+			item = MainWindow.undo.pop
 			
-			
-			'newundoitem = new XYLetter
-			'newundoitem.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
-			'newundoitem.x = mdx-1+i*dx
-			'newundoitem.y = mdy-1+i*dy
-			'undo.Append newundoitem
+			for i = 0 to UBound(item.xyletters)
+			if MainWindow.grid(item.xyletters(i).x,item.xyletters(i).y) = "" then
+			MainWindow.unplaced = left(MainWindow.unplaced,len(MainWindow.unplaced)-1)
+			end
+			MainWindow.grid(item.xyletters(i).x,item.xyletters(i).y) = item.xyletters(i).letter
+			next
+			MainWindow.Refresh
 			Return True
 			
 		End Function
