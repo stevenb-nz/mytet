@@ -255,6 +255,8 @@ End
 		  dim dx,dy,i,j as integer
 		  dim newundoitem as UndoItem
 		  dim newxyletter as XYLetter
+		  dim across, down As string
+		  dim temp() as string
 		  
 		  unplaced = unplaced + word
 		  j = max(abs(mdx - mux),abs(mdy - muy))
@@ -270,6 +272,32 @@ End
 		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
 		  next
 		  undo.Append newundoitem
+		  for i = 1 to 14
+		    across = ""
+		    down = ""
+		    for j = 1 to 14
+		      across = across + grid(j-1,i-1)
+		      down = down + grid(i-1,j-1)
+		    next
+		    if across = "" then
+		      temp = unplaced.Split("")
+		      temp.Shuffle
+		      for j = 1 to 14
+		        grid(j-1,i-1) = temp.Pop
+		      next
+		      unplaced = join(temp,"")
+		      redim undo(-1)
+		    end
+		    if down = "" then
+		      temp = unplaced.Split("")
+		      temp.Shuffle
+		      for j = 1 to 14
+		        grid(i-1,j-1) = temp.Pop
+		      next
+		      unplaced = join(temp,"")
+		      redim undo(-1)
+		    end
+		  next
 		  updateLabel
 		  Refresh
 		  
