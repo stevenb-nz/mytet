@@ -466,6 +466,8 @@ End
 		    next
 		  next
 		  StartButton.Enabled = true
+		  infoLabel.Text = "0 words, 0 letters max"
+		  longword = ""
 		  Refresh
 		  
 		End Sub
@@ -474,13 +476,17 @@ End
 #tag Events infoLabel
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  dim temp() as string
-		  
-		  temp = longword.split(", ")
-		  temp.Sort
-		  longword = Join(temp,", ")
-		  
-		  MsgBox longword
+		  if longword <> "" then
+		    
+		    dim temp() as string
+		    
+		    temp = longword.split(", ")
+		    temp.Sort
+		    longword = Join(temp,", ")
+		    
+		    MsgBox longword
+		    
+		  end
 		  
 		End Function
 	#tag EndEvent
