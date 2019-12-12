@@ -257,6 +257,8 @@ End
 		  dim newxyletter as XYLetter
 		  dim across, down As string
 		  dim temp() as string
+		  dim aclear(-1) as integer
+		  dim dclear(-1) as integer
 		  
 		  unplaced = unplaced + word
 		  j = max(abs(mdx - mux),abs(mdy - muy))
@@ -271,7 +273,6 @@ End
 		    newundoitem.xyletters.Append newxyletter
 		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
 		  next
-		  undo.Append newundoitem
 		  for i = 1 to 14
 		    across = ""
 		    down = ""
@@ -280,24 +281,33 @@ End
 		      down = down + grid(i-1,j-1)
 		    next
 		    if across = "" then
-		      temp = unplaced.Split("")
-		      temp.Shuffle
-		      for j = 1 to 14
-		        grid(j-1,i-1) = temp.Pop
-		      next
-		      unplaced = join(temp,"")
-		      redim undo(-1)
+		      aclear.Append i
 		    end
 		    if down = "" then
-		      temp = unplaced.Split("")
-		      temp.Shuffle
-		      for j = 1 to 14
-		        grid(i-1,j-1) = temp.Pop
-		      next
-		      unplaced = join(temp,"")
-		      redim undo(-1)
+		      dclear.Append i
 		    end
 		  next
+		  if UBound(aclear) < 0 and UBound(dclear) < 0 then
+		    undo.Append newundoitem
+		  else
+		    temp = unplaced.Split("")
+		    temp.Shuffle
+		    for i = 0 to UBound(aclear)
+		      for j = 1 to 14
+		        grid(j-1,aclear(i)-1) = temp.Pop
+		      next
+		    next
+		    for i = 0 to UBound(dclear)
+		      for j = 1 to 14
+		        if grid(dclear(i)-1,j-1) = "" then
+		          grid(dclear(i)-1,j-1) = temp.Pop
+		        end
+		      next
+		    next
+		    unplaced = join(temp,"")
+		    redim undo(-1)
+		  end
+		  
 		  updateLabel
 		  Refresh
 		  
