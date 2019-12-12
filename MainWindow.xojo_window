@@ -516,13 +516,15 @@ End
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  if longword <> "" then
 		    
+		    dim longpop as new MenuItem
 		    dim temp() as string
 		    
 		    temp = longword.split(", ")
 		    temp.Sort
 		    longword = Join(temp,", ")
 		    
-		    MsgBox longword
+		    longpop.Append (new MenuItem(longword))
+		    longpop = longpop.PopUp
 		    
 		  end
 		  
