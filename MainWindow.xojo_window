@@ -518,12 +518,14 @@ End
 		    
 		    dim longpop as new MenuItem
 		    dim temp() as string
+		    dim i as integer
 		    
 		    temp = longword.split(", ")
 		    temp.Sort
-		    longword = Join(temp,", ")
+		    for i = 0 to UBound(temp)
+		      longpop.Append (new MenuItem(temp(i)))
+		    next
 		    
-		    longpop.Append (new MenuItem(longword))
 		    longpop = longpop.PopUp
 		    
 		  end
