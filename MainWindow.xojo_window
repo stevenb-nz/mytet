@@ -278,7 +278,7 @@ End
 		      grid(mdx-1+i*dx,mdy-1+i*dy) = mid(letters,j-i+1,1)
 		    next
 		    undo.Append newundoitem
-		    updateLabel
+		    updateLabels
 		    Refresh
 		  end
 		  
@@ -343,7 +343,7 @@ End
 		    redim undo(-1)
 		  end
 		  
-		  updateLabel
+		  updateLabels
 		  Refresh
 		  
 		End Sub
@@ -382,7 +382,7 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub updateLabel()
+		Sub updateLabels()
 		  dim i, x, y, words, letters as integer
 		  dim su,sul,sl,sdl,sd,sdr,sr,sur as string
 		  
@@ -460,6 +460,7 @@ End
 		  next
 		  
 		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " long max"
+		  scoreLabel.Text = str(origrem) + " original remaining, Score: " + str(score)
 		  
 		End Sub
 	#tag EndMethod
@@ -502,6 +503,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		score As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		undo() As UndoItem
 	#tag EndProperty
 
@@ -530,7 +535,8 @@ End
 		    next
 		  next
 		  origrem = 196
-		  updateLabel
+		  score = 0
+		  updateLabels
 		  Refresh
 		  me.Enabled = false
 		  
