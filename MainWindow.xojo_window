@@ -243,6 +243,24 @@ End
 
 
 	#tag Method, Flags = &h0
+		Sub clearAction()
+		  dim i,j as Integer
+		  
+		  unplaced = ""
+		  for i=0 to 13
+		    for j=0 to 13
+		      grid(i,j) = ""
+		    next
+		  next
+		  StartButton.Enabled = true
+		  infoLabel.Text = "0 words, 0 letters max"
+		  longword = ""
+		  Refresh
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub displayletter(g as graphics, x as integer, y as integer, letter as string)
 		  if gridhl(x-1,y-1) or (showorig and gridorig(x-1,y-1)) then
 		    g.foreColor = rgb(191,191,95)
@@ -311,7 +329,7 @@ End
 		      gridorig(mdx-1+i*dx,mdy-1+i*dy) = false
 		      origrem = origrem - 1
 		      if origrem = 0 then
-		        MsgBox "Game Over"
+		        gameOver = true
 		      end
 		    end
 		  next
@@ -352,6 +370,9 @@ End
 		  
 		  updateLabels
 		  Refresh
+		  if gameOver then
+		    clearAction
+		  end
 		  
 		End Sub
 	#tag EndMethod
@@ -474,6 +495,10 @@ End
 
 
 	#tag Property, Flags = &h0
+		gameOver As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		grid(13,13) As String
 	#tag EndProperty
 
@@ -547,6 +572,7 @@ End
 		  next
 		  origrem = 196
 		  score = 0
+		  gameOver = false
 		  updateLabels
 		  Refresh
 		  me.Enabled = false
@@ -557,18 +583,7 @@ End
 #tag Events ClearButton
 	#tag Event
 		Sub Action()
-		  dim i,j as Integer
-		  
-		  unplaced = ""
-		  for i=0 to 13
-		    for j=0 to 13
-		      grid(i,j) = ""
-		    next
-		  next
-		  StartButton.Enabled = true
-		  infoLabel.Text = "0 words, 0 letters max"
-		  longword = ""
-		  Refresh
+		  clearAction
 		  
 		End Sub
 	#tag EndEvent
