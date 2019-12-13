@@ -244,7 +244,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub displayletter(g as graphics, x as integer, y as integer, letter as string)
-		  if gridhl(x-1,y-1) then
+		  if gridhl(x-1,y-1) or (showorig and gridorig(x-1,y-1)) then
 		    g.foreColor = rgb(191,191,95)
 		  else
 		    g.foreColor = rgb(255,255,191)
@@ -514,6 +514,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		showorig As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		undo() As UndoItem
 	#tag EndProperty
 
@@ -592,6 +596,21 @@ End
 	#tag EndEvent
 #tag EndEvents
 #tag Events scoreLabel
+	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  showorig = true
+		  Refresh
+		  return true
+		  
+		End Function
+	#tag EndEvent
+	#tag Event
+		Sub MouseUp(X As Integer, Y As Integer)
+		  showorig = false
+		  Refresh
+		  
+		End Sub
+	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
@@ -849,5 +868,15 @@ End
 		Group="Behavior"
 		Type="String"
 		EditorType="MultiLineEditor"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="origrem"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="score"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
