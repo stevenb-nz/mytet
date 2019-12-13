@@ -307,6 +307,13 @@ End
 		    newxyletter.y = mdy-1+i*dy
 		    newundoitem.xyletters.Append newxyletter
 		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
+		    if gridorig(mdx-1+i*dx,mdy-1+i*dy) then
+		      gridorig(mdx-1+i*dx,mdy-1+i*dy) = false
+		      origrem = origrem - 1
+		      if origrem = 0 then
+		        MsgBox "Game Over"
+		      end
+		    end
 		  next
 		  for i = 1 to 14
 		    across = ""
