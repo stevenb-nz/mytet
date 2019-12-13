@@ -474,6 +474,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		gridorig(13,13) As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		longword As String
 	#tag EndProperty
 
@@ -491,6 +495,10 @@ End
 
 	#tag Property, Flags = &h0
 		muy As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		origrem As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -518,8 +526,10 @@ End
 		  for i=0 to 13
 		    for j=0 to 13
 		      grid(i,j) = temp.Pop
+		      gridorig(i,j) = true
 		    next
 		  next
+		  origrem = 196
 		  updateLabel
 		  Refresh
 		  me.Enabled = false
