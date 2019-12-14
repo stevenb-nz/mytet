@@ -305,7 +305,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub handleGoodWord(word as string)
-		  dim dx,dy,i,j as integer
+		  dim dx,dy,i,j,rawscore as integer
 		  dim newundoitem as UndoItem
 		  dim newxyletter as XYLetter
 		  dim across, down As string
@@ -367,7 +367,12 @@ End
 		    unplaced = join(temp,"")
 		    redim undo(-1)
 		  end
-		  
+		  rawscore = len(word) - 2
+		  if len(word) = letters then
+		    score = score + pow(2,rawscore)
+		  else
+		    score = score + rawscore
+		  end
 		  updateLabels
 		  Refresh
 		  if gameOver then
@@ -411,9 +416,10 @@ End
 
 	#tag Method, Flags = &h0
 		Sub updateLabels()
-		  dim i, x, y, words, letters as integer
+		  dim i, x, y, words as integer
 		  dim su,sul,sl,sdl,sd,sdr,sr,sur as string
 		  
+		  letters = 0
 		  for x = 0 to 13
 		    for y = 0 to 13
 		      su = ""
@@ -508,6 +514,10 @@ End
 
 	#tag Property, Flags = &h0
 		gridorig(13,13) As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		letters As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -893,5 +903,16 @@ End
 		Name="score"
 		Group="Behavior"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="gameOver"
+		Group="Behavior"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="showorig"
+		Group="Behavior"
+		InitialValue="false"
+		Type="boolean"
 	#tag EndViewProperty
 #tag EndViewBehavior
