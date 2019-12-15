@@ -312,7 +312,9 @@ End
 		  dim temp() as string
 		  dim aclear(-1) as integer
 		  dim dclear(-1) as integer
+		  dim scoring as Boolean
 		  
+		  scoring = false
 		  unplaced = unplaced + word
 		  j = max(abs(mdx - mux),abs(mdy - muy))
 		  dx = Sign(mux - mdx)
@@ -328,6 +330,7 @@ End
 		    if gridorig(mdx-1+i*dx,mdy-1+i*dy) then
 		      gridorig(mdx-1+i*dx,mdy-1+i*dy) = false
 		      origrem = origrem - 1
+		      scoring = true
 		      if origrem = 0 then
 		        gameOver = true
 		      end
@@ -368,10 +371,12 @@ End
 		    redim undo(-1)
 		  end
 		  rawscore = len(word) - 2
-		  if len(word) = letters then
-		    score = score + pow(2,rawscore)
-		  else
-		    score = score + rawscore
+		  if scoring then
+		    if len(word) = letters then
+		      score = score + pow(2,rawscore)
+		    else
+		      score = score + rawscore
+		    end
 		  end
 		  updateLabels
 		  Refresh
