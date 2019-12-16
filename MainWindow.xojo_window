@@ -113,7 +113,7 @@ Begin Window MainWindow
       TabIndex        =   2
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "0 words, 0 letters max"
+      Text            =   "0 words, 0 letters max (0 words)"
       TextAlign       =   1
       TextColor       =   &c00000000
       TextFont        =   "System"
@@ -253,7 +253,7 @@ End
 		    next
 		  next
 		  StartButton.Enabled = true
-		  infoLabel.Text = "0 words, 0 letters max"
+		  infoLabel.Text = "0 words, 0 letters max (0 words)"
 		  longword = ""
 		  Refresh
 		  
