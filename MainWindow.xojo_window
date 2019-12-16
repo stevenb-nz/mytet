@@ -498,7 +498,7 @@ End
 		    next
 		  next
 		  
-		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " long max"
+		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " long max (x"+str(longword.CountFields(", "))+")"
 		  scoreLabel.Text = str(origrem) + " original remaining, Score: " + str(score)
 		  
 		End Sub
@@ -919,5 +919,10 @@ End
 		Group="Behavior"
 		InitialValue="false"
 		Type="boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="letters"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
