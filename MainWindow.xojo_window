@@ -498,7 +498,7 @@ End
 		    next
 		  next
 		  
-		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " long max (x"+str(longword.CountFields(", "))+")"
+		  infoLabel.Text = str(words) + " word" + if(words=1,", ","s, ")+ str(letters) + " letters max ("+str(longword.CountFields(", "))+" words)"
 		  scoreLabel.Text = str(origrem) + " original remaining, Score: " + str(score)
 		  
 		End Sub
