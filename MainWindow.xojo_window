@@ -500,6 +500,9 @@ End
 		  
 		  infoLabel.Text = str(words) + if(words=1," word, "," words, ") + str(letters) + " letters max ("+str(longword.CountFields(", ")) + if(longword.CountFields(", ")=1," word"," words")+")"
 		  scoreLabel.Text = str(origrem) + " original remaining, Score: " + str(score)
+		  if words = 0 then
+		    gameOver = true
+		  end
 		  
 		End Sub
 	#tag EndMethod
