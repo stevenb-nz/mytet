@@ -1,6 +1,10 @@
 #tag Class
 Protected Class UndoItem
 	#tag Property, Flags = &h0
+		score As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		xyletters() As XYLetter
 	#tag EndProperty
 
@@ -37,11 +41,6 @@ Protected Class UndoItem
 			Visible=true
 			Group="Position"
 			InitialValue="0"
-			Type="Integer"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="xyletters()"
-			Group="Behavior"
 			Type="Integer"
 		#tag EndViewProperty
 	#tag EndViewBehavior

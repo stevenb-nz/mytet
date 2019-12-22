@@ -45,6 +45,7 @@ Inherits Application
 			end
 			MainWindow.grid(item.xyletters(i).x,item.xyletters(i).y) = item.xyletters(i).letter
 			next
+			MainWindow.score = MainWindow.score - item.score
 			MainWindow.updateLabels
 			MainWindow.Refresh
 			Return True

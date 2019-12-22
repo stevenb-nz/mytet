@@ -336,6 +336,15 @@ End
 		      end
 		    end
 		  next
+		  rawscore = len(word) - 2
+		  if scoring then
+		    if len(word) = letters then
+		      newundoitem.score = pow(2,rawscore)
+		    else
+		      newundoitem.score = rawscore
+		    end
+		     score = score + newundoitem.score
+		  end
 		  for i = 1 to 14
 		    across = ""
 		    down = ""
@@ -369,14 +378,6 @@ End
 		    next
 		    unplaced = join(temp,"")
 		    redim undo(-1)
-		  end
-		  rawscore = len(word) - 2
-		  if scoring then
-		    if len(word) = letters then
-		      score = score + pow(2,rawscore)
-		    else
-		      score = score + rawscore
-		    end
 		  end
 		  updateLabels
 		  Refresh
