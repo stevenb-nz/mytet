@@ -278,27 +278,9 @@ End
 
 	#tag Method, Flags = &h0
 		Sub handleBadWord(letters as String)
-		  dim dx,dy,i,j as integer
-		  dim newundoitem as UndoItem
-		  dim newxyletter as XYLetter
-		  
-		  j = max(abs(mdx - mux),abs(mdy - muy))
-		  if j = len(letters)-1 then
-		    dx = Sign(mux - mdx)
-		    dy = sign(muy - mdy)
-		    newundoitem = new UndoItem
-		    for i = 0 to j
-		      newxyletter = new XYLetter
-		      newxyletter.letter = grid(mdx-1+i*dx,mdy-1+i*dy)
-		      newxyletter.x = mdx-1+i*dx
-		      newxyletter.y = mdy-1+i*dy
-		      newundoitem.xyletters.Append newxyletter
-		      grid(mdx-1+i*dx,mdy-1+i*dy) = mid(letters,j-i+1,1)
-		    next
-		    undo.Append newundoitem
-		    updateLabels
-		    Refresh
-		  end
+		  score = score - Pow(2, len(letters)-2)
+		  updateLabels
+		  refresh
 		  
 		End Sub
 	#tag EndMethod
@@ -343,7 +325,7 @@ End
 		    else
 		      newundoitem.score = rawscore
 		    end
-		     score = score + newundoitem.score
+		    score = score + newundoitem.score
 		  end
 		  for i = 1 to 14
 		    across = ""
