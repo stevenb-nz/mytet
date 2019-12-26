@@ -508,6 +508,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		highscore As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		letters As Integer
 	#tag EndProperty
 
