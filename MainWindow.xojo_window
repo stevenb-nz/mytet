@@ -23,7 +23,7 @@ Begin Window MainWindow
    MinWidth        =   421
    Placement       =   1
    Resizeable      =   True
-   Title           =   "Word Crush"
+   Title           =   "Word Crush - High Score: 0"
    Visible         =   True
    Width           =   421
    Begin PushButton StartButton
@@ -246,6 +246,10 @@ End
 		Sub clearAction()
 		  dim i,j as Integer
 		  
+		  if score > highscore then
+		    highscore = score
+		    self.Title = "Word Crush - High Score: " + str(highscore)
+		  end
 		  unplaced = ""
 		  for i=0 to 13
 		    for j=0 to 13
