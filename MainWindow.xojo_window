@@ -919,4 +919,9 @@ End
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
+	#tag ViewProperty
+		Name="highscore"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
 #tag EndViewBehavior
