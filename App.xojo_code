@@ -5,8 +5,6 @@ Inherits Application
 		Sub Close()
 		  wordsDB.Close
 		  
-		  'save high score
-		  
 		End Sub
 	#tag EndEvent
 
@@ -28,8 +26,6 @@ Inherits Application
 		  if not wordsDB.CreateDatabaseFile then
 		    MsgBox "Error connecting to Words database."
 		  end
-		  
-		  ' load saved high score if present
 		  
 		End Sub
 	#tag EndEvent

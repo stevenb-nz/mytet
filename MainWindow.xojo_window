@@ -165,6 +165,19 @@ End
 
 #tag WindowCode
 	#tag Event
+		Sub Close()
+		  dim f as FolderItem
+		  dim t as TextOutputStream
+		  
+		  f = SpecialFolder.Preferences.Child("wcud.txt")
+		  t = TextOutputStream.Create(f)
+		  t.WriteLine str(highscore)
+		  t.Close
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  dim i, j, tempx, tempy as integer
 		  
@@ -225,6 +238,12 @@ End
 		      end
 		    end
 		  end
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Open()
+		  
 		End Sub
 	#tag EndEvent
 
