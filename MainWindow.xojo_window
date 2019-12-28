@@ -169,6 +169,10 @@ End
 		  dim f as FolderItem
 		  dim t as TextOutputStream
 		  
+		  if score > highscore then
+		    highscore = score
+		  end
+		  
 		  f = SpecialFolder.Preferences.Child("wcud.txt")
 		  t = TextOutputStream.Create(f)
 		  t.WriteLine str(highscore)
@@ -243,6 +247,19 @@ End
 
 	#tag Event
 		Sub Open()
+		  dim f as FolderItem
+		  dim t as TextInputStream
+		  
+		  f = SpecialFolder.Preferences.Child("wcud.txt")
+		  
+		  if f.Exists then
+		    t = TextInputStream.Open(f)
+		    if t <> nil then
+		      highscore = val(t.ReadLine)
+		      self.Title = "Word Crush - High Score: " + str(highscore)
+		      t.Close
+		    end
+		  end
 		  
 		End Sub
 	#tag EndEvent
