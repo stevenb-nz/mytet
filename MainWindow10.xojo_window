@@ -1,5 +1,5 @@
 #tag Window
-Begin Window MainWindow
+Begin Window MainWindow10
    BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
