@@ -382,13 +382,15 @@ End
 		    newxyletter.x = mdx-1+i*dx
 		    newxyletter.y = mdy-1+i*dy
 		    newundoitem.xyletters.Append newxyletter
-		    grid(mdx-1+i*dx,mdy-1+i*dy) = ""
-		    if gridorig(mdx-1+i*dx,mdy-1+i*dy) then
-		      gridorig(mdx-1+i*dx,mdy-1+i*dy) = false
-		      origrem = origrem - 1
-		      scoring = true
-		      if origrem = 0 then
-		        gameOver = true
+		    if grid(mdx-1+i*dx,mdy-1+i*dy) <> "" then
+		      grid(mdx-1+i*dx,mdy-1+i*dy) = ""
+		      if gridorig(mdx-1+i*dx,mdy-1+i*dy) then
+		        gridorig(mdx-1+i*dx,mdy-1+i*dy) = false
+		        origrem = origrem - 1
+		        scoring = true
+		        if origrem = 0 then
+		          gameOver = true
+		        end
 		      end
 		    end
 		  next
