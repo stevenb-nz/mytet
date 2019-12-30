@@ -23,7 +23,7 @@ Begin Window MainWindow10
    MinWidth        =   421
    Placement       =   1
    Resizeable      =   True
-   Title           =   "Word Crush - High Score: 0"
+   Title           =   "Word Crush 10 - High Score: 0"
    Visible         =   True
    Width           =   421
    Begin PushButton StartButton
@@ -173,7 +173,7 @@ End
 		    highscore = score
 		  end
 		  
-		  f = SpecialFolder.Preferences.Child("wcud.txt")
+		  f = SpecialFolder.Preferences.Child("wc10ud.txt")
 		  t = TextOutputStream.Create(f)
 		  t.WriteLine str(highscore)
 		  t.Close
@@ -261,13 +261,13 @@ End
 		  dim f as FolderItem
 		  dim t as TextInputStream
 		  
-		  f = SpecialFolder.Preferences.Child("wcud.txt")
+		  f = SpecialFolder.Preferences.Child("wc10ud.txt")
 		  
 		  if f.Exists then
 		    t = TextInputStream.Open(f)
 		    if t <> nil then
 		      highscore = val(t.ReadLine)
-		      self.Title = "Word Crush - High Score: " + str(highscore)
+		      self.Title = "Word Crush 10 - High Score: " + str(highscore)
 		      t.Close
 		    end
 		  end
@@ -318,7 +318,7 @@ End
 		  
 		  if score > highscore then
 		    highscore = score
-		    self.Title = "Word Crush - High Score: " + str(highscore)
+		    self.Title = "Word Crush 10 - High Score: " + str(highscore)
 		  end
 		  unplaced = ""
 		  for i=0 to 13
