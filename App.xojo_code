@@ -39,9 +39,6 @@ Inherits Application
 		#Tag Instance, Platform = Linux, Language = Default, Definition  = \"Ctrl+Q"
 	#tag EndConstant
 
-	#tag Constant, Name = tiles, Type = String, Dynamic = False, Default = \"AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZAAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ", Scope = Public
-	#tag EndConstant
-
 
 	#tag ViewBehavior
 	#tag EndViewBehavior

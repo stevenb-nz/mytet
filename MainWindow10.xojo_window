@@ -630,6 +630,10 @@ End
 	#tag EndProperty
 
 
+	#tag Constant, Name = tiles, Type = String, Dynamic = False, Default = \"AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ", Scope = Public
+	#tag EndConstant
+
+
 #tag EndWindowCode
 
 #tag Events StartButton
@@ -639,7 +643,7 @@ End
 		  dim i,j as integer
 		  
 		  for i = 1 to 196
-		    temp.Append mid(app.tiles,i,1)
+		    temp.Append mid(tiles,i,1)
 		  next
 		  
 		  temp.Shuffle
