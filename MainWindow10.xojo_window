@@ -361,7 +361,7 @@ End
 
 	#tag Method, Flags = &h0
 		Sub handleGoodWord(word as string)
-		  dim dx,dy,i,j,rawscore as integer
+		  dim dx,dy,i,j,rawscore,tempcount as integer
 		  dim newundoitem as UndoItem
 		  dim newxyletter as XYLetter
 		  dim across, down As string
@@ -423,12 +423,14 @@ End
 		    temp = unplaced.Split("")
 		    temp.Shuffle
 		    for i = 0 to UBound(aclear)
-		      for j = 1 to 14
+		      tempcount = ubound(temp)+1
+		      for j = 1 to min(14,tempcount)
 		        grid(j-1,aclear(i)-1) = temp.Pop
 		      next
 		    next
 		    for i = 0 to UBound(dclear)
-		      for j = 1 to 14
+		      tempcount = ubound(temp)+1
+		      for j = 1 to min(14,tempcount)
 		        if grid(dclear(i)-1,j-1) = "" then
 		          grid(dclear(i)-1,j-1) = temp.Pop
 		        end
