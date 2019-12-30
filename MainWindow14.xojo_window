@@ -182,6 +182,17 @@ End
 	#tag EndEvent
 
 	#tag Event
+		Sub EnableMenuItems()
+		  if undo.Ubound < 0 then
+		    EditUndo.Enabled = false
+		  else
+		    EditUndo.Enabled = true
+		  end
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  dim i, j, tempx, tempy as integer
 		  
@@ -276,6 +287,29 @@ End
 		  
 		End Sub
 	#tag EndEvent
+
+
+	#tag MenuHandler
+		Function EditUndo() As Boolean Handles EditUndo.Action
+			dim i as integer
+			dim item as UndoItem
+			
+			item = undo.pop
+			
+			for i = 0 to UBound(item.xyletters)
+			if grid(item.xyletters(i).x,item.xyletters(i).y) = "" then
+			unplaced = left(unplaced,len(unplaced)-1)
+			end
+			grid(item.xyletters(i).x,item.xyletters(i).y) = item.xyletters(i).letter
+			next
+			score = score - item.score
+			updateLabels
+			Refresh
+			
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
 
 
 	#tag Method, Flags = &h0

@@ -9,17 +9,6 @@ Inherits Application
 	#tag EndEvent
 
 	#tag Event
-		Sub EnableMenuItems()
-		  if MainWindow.undo.Ubound < 0 then
-		    EditUndo.Enabled = false
-		  else
-		    EditUndo.Enabled = true
-		  end
-		  
-		End Sub
-	#tag EndEvent
-
-	#tag Event
 		Sub Open()
 		  wordsDB = new SQLiteDatabase
 		  wordsDB.DatabaseFile = SpecialFolder.Documents.Child("Words.sqlite")
@@ -29,28 +18,6 @@ Inherits Application
 		  
 		End Sub
 	#tag EndEvent
-
-
-	#tag MenuHandler
-		Function EditUndo() As Boolean Handles EditUndo.Action
-			dim i as integer
-			dim item as UndoItem
-			
-			item = MainWindow.undo.pop
-			
-			for i = 0 to UBound(item.xyletters)
-			if MainWindow.grid(item.xyletters(i).x,item.xyletters(i).y) = "" then
-			MainWindow.unplaced = left(MainWindow.unplaced,len(MainWindow.unplaced)-1)
-			end
-			MainWindow.grid(item.xyletters(i).x,item.xyletters(i).y) = item.xyletters(i).letter
-			next
-			MainWindow.score = MainWindow.score - item.score
-			MainWindow.updateLabels
-			MainWindow.Refresh
-			Return True
-			
-		End Function
-	#tag EndMenuHandler
 
 
 	#tag Property, Flags = &h0
