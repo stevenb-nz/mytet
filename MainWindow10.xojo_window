@@ -417,20 +417,19 @@ End
 		      dclear.Append i
 		    end
 		  next
-		  if UBound(aclear) < 0 and UBound(dclear) < 0 then
+		  temp = unplaced.Split("")
+		  temp.Shuffle
+		  tempcount = ubound(temp)+1
+		  if (UBound(aclear) < 0 and UBound(dclear) < 0) or (UBound(aclear)+1)*14 + (ubound(dclear)+1) * (13 - UBound(aclear)) > tempcount then
 		    undo.Append newundoitem
 		  else
-		    temp = unplaced.Split("")
-		    temp.Shuffle
 		    for i = 0 to UBound(aclear)
-		      tempcount = ubound(temp)+1
-		      for j = 1 to min(14,tempcount)
+		      for j = 1 to 14
 		        grid(j-1,aclear(i)-1) = temp.Pop
 		      next
 		    next
 		    for i = 0 to UBound(dclear)
-		      tempcount = ubound(temp)+1
-		      for j = 1 to min(14,tempcount)
+		      for j = 1 to 14
 		        if grid(dclear(i)-1,j-1) = "" then
 		          grid(dclear(i)-1,j-1) = temp.Pop
 		        end
