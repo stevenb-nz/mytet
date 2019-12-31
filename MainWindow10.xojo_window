@@ -279,8 +279,8 @@ End
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  dim i,j as integer
 		  
-		  for i=1 to 14
-		    for j=1 to 14
+		  for i=1 to 10
+		    for j=1 to 10
 		      displayletter g,i,j,grid(i-1,j-1)
 		    next
 		  next
@@ -341,11 +341,11 @@ End
 		  else
 		    g.foreColor = rgb(255,255,191)
 		  end
-		  g.fillrect x*30-28,y*30-28,27,27
+		  g.fillrect x*42-40,y*42-40,39,39
 		  g.foreColor = rgb(0,0,0)
 		  g.TextFont="Courier"
-		  g.TextSize=24
-		  g.DrawString letter, x*30-25, y*30-9
+		  g.TextSize=36
+		  g.DrawString letter, x*42-32, y*42-9
 		  
 		End Sub
 	#tag EndMethod
