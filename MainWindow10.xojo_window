@@ -645,18 +645,18 @@ End
 		  dim temp(-1) As string
 		  dim i,j as integer
 		  
-		  for i = 1 to 196
+		  for i = 1 to 100
 		    temp.Append mid(tiles,i,1)
 		  next
 		  
 		  temp.Shuffle
-		  for i=0 to 13
-		    for j=0 to 13
+		  for i=0 to 9
+		    for j=0 to 9
 		      grid(i,j) = temp.Pop
 		      gridorig(i,j) = true
 		    next
 		  next
-		  origrem = 196
+		  origrem = 100
 		  score = 0
 		  gameOver = false
 		  updateLabels
