@@ -199,14 +199,14 @@ End
 		  if StartButton.Enabled = false then
 		    mdx = 0
 		    mdy = 0
-		    tempx = (x-1) \ 30 + 1
-		    tempy = (y-1) \ 30 + 1
+		    tempx = (x-1) \ 42 + 1
+		    tempy = (y-1) \ 42 + 1
 		    
-		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and tempx > 0 and tempx < 15 and tempy > 0 and tempy < 15 then
+		    if (x-1) mod 42 > 0 and (y-1) mod 42 > 0 and tempx > 0 and tempx < 11 and tempy > 0 and tempy < 11 then
 		      mdx = tempx
 		      mdy = tempy
-		      for i = 1 to 14
-		        for j = 1 to 14
+		      for i = 1 to 10
+		        for j = 1 to 10
 		          if i=mdx or j=mdy or i-j=mdx-mdy or i+j=mdx+mdy then
 		            gridhl(i-1,j-1) = true
 		          end
@@ -228,19 +228,19 @@ End
 		  dim s as string
 		  
 		  if mdx > 0 and mdy > 0 then
-		    for i = 1 to 14
-		      for j = 1 to 14
+		    for i = 1 to 10
+		      for j = 1 to 10
 		        gridhl(i-1,j-1) = false
 		      next
 		    next
 		    Refresh
-		    mux = (x-1) \ 30 + 1
-		    muy = (y-1) \ 30 + 1
+		    mux = (x-1) \ 42 + 1
+		    muy = (y-1) \ 42 + 1
 		    j = max(abs(mdx - mux),abs(mdy - muy))
 		    dx = Sign(mux - mdx)
 		    dy = sign(muy - mdy)
 		    
-		    if (x-1) mod 30 > 0 and (y-1) mod 30 > 0 and mux > 0 and mux < 15 and muy > 0 and muy < 15 then
+		    if (x-1) mod 42 > 0 and (y-1) mod 42 > 0 and mux > 0 and mux < 11 and muy > 0 and muy < 11 then
 		      if j > 0 and (abs(mdx - mux)=abs(mdy - muy) or abs(mdx - mux)=0 or abs(mdy - muy)=0) then
 		        for i = 0 to j
 		          s = s + grid(mdx-1+i*dx,mdy-1+i*dy)
