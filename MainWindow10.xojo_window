@@ -573,15 +573,15 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		grid(13,13) As String
+		grid(9,9) As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		gridhl(13,13) As Boolean
+		gridhl(9,9) As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		gridorig(13,13) As Boolean
+		gridorig(9,9) As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
