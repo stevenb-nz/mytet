@@ -321,8 +321,8 @@ End
 		    self.Title = "Word Crush 10 - High Score: " + str(highscore)
 		  end
 		  unplaced = ""
-		  for i=0 to 13
-		    for j=0 to 13
+		  for i=0 to 9
+		    for j=0 to 9
 		      grid(i,j) = ""
 		    next
 		  next
@@ -403,10 +403,10 @@ End
 		    end
 		    score = score + newundoitem.score
 		  end
-		  for i = 1 to 14
+		  for i = 1 to 10
 		    across = ""
 		    down = ""
-		    for j = 1 to 14
+		    for j = 1 to 10
 		      across = across + grid(j-1,i-1)
 		      down = down + grid(i-1,j-1)
 		    next
@@ -420,16 +420,16 @@ End
 		  temp = unplaced.Split("")
 		  temp.Shuffle
 		  tempcount = ubound(temp)+1
-		  if (UBound(aclear) < 0 and UBound(dclear) < 0) or (UBound(aclear)+1)*14 + (ubound(dclear)+1) * (13 - UBound(aclear)) > tempcount then
+		  if (UBound(aclear) < 0 and UBound(dclear) < 0) or (UBound(aclear)+1)*10 + (ubound(dclear)+1) * (9 - UBound(aclear)) > tempcount then
 		    undo.Append newundoitem
 		  else
 		    for i = 0 to UBound(aclear)
-		      for j = 1 to 14
+		      for j = 1 to 10
 		        grid(j-1,aclear(i)-1) = temp.Pop
 		      next
 		    next
 		    for i = 0 to UBound(dclear)
-		      for j = 1 to 14
+		      for j = 1 to 10
 		        if grid(dclear(i)-1,j-1) = "" then
 		          grid(dclear(i)-1,j-1) = temp.Pop
 		        end
@@ -485,8 +485,8 @@ End
 		  dim su,sul,sl,sdl,sd,sdr,sr,sur as string
 		  
 		  letters = 0
-		  for x = 0 to 13
-		    for y = 0 to 13
+		  for x = 0 to 9
+		    for y = 0 to 9
 		      su = ""
 		      sul = ""
 		      sl = ""
@@ -504,7 +504,7 @@ End
 		        sdr = grid(x,y)
 		        sr = grid(x,y)
 		        sur = grid(x,y)
-		        for i = 1 to 13
+		        for i = 1 to 9
 		          if y-i > -1 then
 		            if grid(x,y-i) <> "" then
 		              su = su + grid(x,y-i)
@@ -523,31 +523,31 @@ End
 		              processWord(sl,words,letters)
 		            end
 		          end
-		          if x-i > -1 and y+i < 14 then
+		          if x-i > -1 and y+i < 10 then
 		            if grid(x-i,y+i) <> "" then
 		              sdl = sdl + grid(x-i,y+i)
 		              processWord(sdl,words,letters)
 		            end
 		          end
-		          if y+i < 14 then
+		          if y+i < 10 then
 		            if grid(x,y+i) <> "" then
 		              sd = sd + grid(x,y+i)
 		              processWord(sd,words,letters)
 		            end
 		          end
-		          if x+i < 14 and y+i < 14 then
+		          if x+i < 10 and y+i < 10 then
 		            if grid(x+i,y+i) <> "" then
 		              sdr = sdr + grid(x+i,y+i)
 		              processWord(sdr,words,letters)
 		            end
 		          end
-		          if x+i < 14 then
+		          if x+i < 10 then
 		            if grid(x+i,y) <> "" then
 		              sr = sr + grid(x+i,y)
 		              processWord(sr,words,letters)
 		            end
 		          end
-		          if x+i < 14 and y-i > -1 then
+		          if x+i < 10 and y-i > -1 then
 		            if grid(x+i,y-i) <> "" then
 		              sur = sur + grid(x+i,y-i)
 		              processWord(sur,words,letters)
