@@ -30,8 +30,8 @@ Inherits Application
 
 	#tag MenuHandler
 		Function Window10x10() As Boolean Handles Window10x10.Action
-			mainWindow10.Visible = true
-			mainWindow14.Visible = false
+			mainWindow10.show
+			mainWindow14.Hide
 			Return True
 			
 		End Function
@@ -39,8 +39,8 @@ Inherits Application
 
 	#tag MenuHandler
 		Function Window14x14() As Boolean Handles Window14x14.Action
-			mainWindow10.Visible = false
-			mainWindow14.Visible = true
+			mainWindow10.Hide
+			mainWindow14.Show
 			Return True
 			
 		End Function

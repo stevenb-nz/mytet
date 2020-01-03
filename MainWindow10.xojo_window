@@ -177,6 +177,7 @@ End
 		  t = TextOutputStream.Create(f)
 		  t.WriteLine str(highscore)
 		  t.Close
+		  MainWindow14.Show
 		  
 		End Sub
 	#tag EndEvent
@@ -188,8 +189,6 @@ End
 		  else
 		    EditUndo.Enabled = true
 		  end
-		  Window14x14.Enabled = true
-		  Window10x10.Enabled = false
 		  
 		End Sub
 	#tag EndEvent
