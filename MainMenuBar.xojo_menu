@@ -94,5 +94,26 @@ Begin Menu MainMenuBar
          Visible = True
       End
    End
+   Begin MenuItem WindowMenu
+      SpecialMenu = 0
+      Text = "&Window"
+      Index = -2147483648
+      AutoEnable = True
+      Visible = True
+      Begin MenuItem Window10x10
+         SpecialMenu = 0
+         Text = "10x10"
+         Index = -2147483648
+         AutoEnable = True
+         Visible = True
+      End
+      Begin MenuItem Window14x14
+         SpecialMenu = 0
+         Text = "14x14"
+         Index = -2147483648
+         AutoEnable = True
+         Visible = True
+      End
+   End
 End
 #tag EndMenu
