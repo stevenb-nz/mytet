@@ -9,6 +9,14 @@ Inherits Application
 	#tag EndEvent
 
 	#tag Event
+		Sub EnableMenuItems()
+		  Window14x14.Enabled = true
+		  Window10x10.Enabled = true
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Open()
 		  wordsDB = new SQLiteDatabase
 		  wordsDB.DatabaseFile = SpecialFolder.Documents.Child("Words.sqlite")
@@ -18,6 +26,25 @@ Inherits Application
 		  
 		End Sub
 	#tag EndEvent
+
+
+	#tag MenuHandler
+		Function Window10x10() As Boolean Handles Window10x10.Action
+			mainWindow10.Visible = true
+			mainWindow14.Visible = false
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
+
+	#tag MenuHandler
+		Function Window14x14() As Boolean Handles Window14x14.Action
+			mainWindow10.Visible = false
+			mainWindow14.Visible = true
+			Return True
+			
+		End Function
+	#tag EndMenuHandler
 
 
 	#tag Property, Flags = &h0

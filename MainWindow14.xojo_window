@@ -188,6 +188,8 @@ End
 		  else
 		    EditUndo.Enabled = true
 		  end
+		  Window14x14.Enabled = false
+		  Window10x10.Enabled = true
 		  
 		End Sub
 	#tag EndEvent
