@@ -669,7 +669,11 @@ End
 #tag Events ClearButton
 	#tag Event
 		Sub Action()
-		  clearAction
+		  if me.Caption = "Clear" then
+		    clearAction
+		  else
+		    
+		  end
 		  
 		End Sub
 	#tag EndEvent
