@@ -63,7 +63,7 @@ Begin Window MainWindow14
       Bold            =   False
       ButtonStyle     =   "0"
       Cancel          =   False
-      Caption         =   "Clear"
+      Caption         =   "Clear HS"
       Default         =   False
       Enabled         =   True
       Height          =   20
