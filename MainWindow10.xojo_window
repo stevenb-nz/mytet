@@ -672,10 +672,19 @@ End
 #tag Events ClearButton
 	#tag Event
 		Sub Action()
+		  dim f as FolderItem
+		  dim t as TextOutputStream
+		  
 		  if me.Caption = "Clear" then
 		    clearAction
 		  else
-		    
+		    score = 0
+		    highscore = 0
+		    f = SpecialFolder.Preferences.Child("wc10ud.txt")
+		    t = TextOutputStream.Create(f)
+		    t.WriteLine str(0)
+		    t.Close
+		    self.Title = "Word Crush 10x10 - High Score: " + str(highscore)
 		  end
 		  
 		End Sub
