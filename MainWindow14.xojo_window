@@ -327,6 +327,7 @@ End
 		      grid(i,j) = ""
 		    next
 		  next
+		  ClearButton.Caption = "Clear HS"
 		  StartButton.Enabled = true
 		  infoLabel.Text = "0 words, 0 letters max (0 words)"
 		  longword = ""
@@ -659,6 +660,7 @@ End
 		  gameOver = false
 		  updateLabels
 		  Refresh
+		  ClearButton.Caption = "Clear"
 		  me.Enabled = false
 		  
 		End Sub
